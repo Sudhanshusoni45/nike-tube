@@ -1,0 +1,13 @@
+.videoCard_grid{
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(auto-fill,80%);
+    justify-content: center;
+}
+
+@media screen and (min-width: 750px){
+    .videoCard_grid{
+        grid-template-columns: repeat(auto-fill,350px)
+    }
+    
+}

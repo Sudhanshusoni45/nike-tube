@@ -1,8 +1,20 @@
-.card{
+.videoCard_container{
     display: flex;
-    /* border: 1px solid black; */
-    width: 80%;
+    width: 100%;
+    flex-direction: column;
+}
+.videoCard{
     height: 16rem;
     box-shadow: var(--medium-box-shadow);
-
+    width: 100%;
+    border-radius: 1rem;
+}
+.videoCard_body{
+    display: flex;
+    padding: 0 var(--space-xs);
+    margin-top: var(--space-xs);
+}
+.videoCard_body_content{
+    padding-left:var(--space-xs);
+    width: 80%;
 }

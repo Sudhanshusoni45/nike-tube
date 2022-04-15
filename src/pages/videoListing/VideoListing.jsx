@@ -1,8 +1,18 @@
 import { Card } from "../../components";
-
+import "./videoListing.css";
 const VideoListing = () => {
   return (
-    <div className="car-container">
+    <div className="videoCard_grid">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
       <Card />
       <Card />
       <Card />

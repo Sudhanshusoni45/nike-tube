@@ -1,5 +1,5 @@
 .navigation{
     background-color: var(--hover-grey);
     box-shadow: var(--medium-box-shadow);
-    color: #2e2e2e;
+    color: var(--font-color);
 }

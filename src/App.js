@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Navbar } from "./components";
+import { MobileDrawer, Navbar } from "./components";
 import logo from "./logo.png";
 import { VideoListing } from "./pages";
 
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<VideoListing />} />
       </Routes>
+      <MobileDrawer />
     </div>
   );
 }

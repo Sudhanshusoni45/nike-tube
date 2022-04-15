@@ -1,8 +1,9 @@
 .videoCard_grid{
     display: grid;
-    gap: var(--space-xl);
+    gap: var(--space-md);
     grid-template-columns: repeat(auto-fill,80%);
     justify-content: center;
+    margin-top: var(--space-xl);
 }
 
 @media screen and (min-width: 750px){

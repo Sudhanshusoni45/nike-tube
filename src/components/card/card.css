@@ -1,0 +1,8 @@
+.card{
+    display: flex;
+    /* border: 1px solid black; */
+    width: 80%;
+    height: 16rem;
+    box-shadow: var(--medium-box-shadow);
+
+}

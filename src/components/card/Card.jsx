@@ -7,7 +7,7 @@ const Card = () => {
       <div className="videoCard_body">
         <img
           src="https://picsum.photos/200/300"
-          alt=""
+          alt="dummy-images"
           className="avatar videoCard_thumbnail"
         />
         <div className="videoCard_body_content">

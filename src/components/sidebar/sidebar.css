@@ -1,5 +1,6 @@
 .sidebar{
-    padding: var(--space-md);
+    padding: var(--space-md) 0 var(--space-md) var(--space-xl);
+    width: 15%;
 }
 .sidebar_list{
     cursor: pointer;
@@ -11,4 +12,16 @@
 }
 .watchlater_icon{
     margin-left: .2rem;
+}
+
+@media screen and (max-width:850px){
+    .sidebar{
+        width: 17%;
+    }
+}
+
+@media screen and (max-width:750px){
+    .sidebar{
+        display: none;
+    }
 }

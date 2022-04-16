@@ -3,21 +3,23 @@ import "./videoListing.css";
 const VideoListing = () => {
   return (
     <>
-      <Sidebar />
-      <div className="videoCard_grid">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <div className="sidebar_videogrid_container">
+        <Sidebar />
+        <div className="videoCard_grid">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
       </div>
     </>
   );

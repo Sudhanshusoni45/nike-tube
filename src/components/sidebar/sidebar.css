@@ -1,0 +1,7 @@
+.sidebar_icons{
+    display: flex;
+    flex-direction: column;
+}
+.playlist_icon{
+    width: 1.2rem;
+}

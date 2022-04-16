@@ -1,7 +1,14 @@
-.sidebar_icons{
-    display: flex;
-    flex-direction: column;
+.sidebar{
+    padding: var(--space-md);
 }
-.playlist_icon{
-    width: 1.2rem;
+.sidebar_list{
+    cursor: pointer;
+    font-weight: 500;
+}
+.sidebar_icon{
+    font-size: 1.4rem;
+    margin: 0 var(--space-xs) var(--space-md) 0;
+}
+.watchlater_icon{
+    margin-left: .2rem;
 }

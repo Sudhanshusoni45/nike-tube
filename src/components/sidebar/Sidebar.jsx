@@ -3,22 +3,35 @@ import "./sidebar.css";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <ul className="sidebar_icons">
-        <i>
-          <i className="fas fa-home">Home</i>
-        </i>
-        <i>
-          <i className="fas fa-compass">Explore</i>
-        </i>
-        <i className="fas fa-list-ul">Playlist</i>
+      <ul className="sidebar_list list_reset">
         <li>
-          <i className="fas fa-bookmark">Watchlater</i>
+          <i className="sidebar_icon fas fa-home"></i>
+
+          <span>Home</span>
         </li>
         <li>
-          <i className="fas fa-history">History</i>
+          <i className="sidebar_icon fas fa-compass"></i>
+
+          <span>Explore</span>
         </li>
         <li>
-          <i className="fas fa-cog">Settings</i>
+          <i className="sidebar_icon fas fa-list-ul"></i>
+
+          <span>Playlist</span>
+        </li>
+        <li>
+          <i className="sidebar_icon fas fa-bookmark watchlater_icon"></i>
+          <span>Watchlater</span>
+        </li>
+        <li>
+          <i className="sidebar_icon fas fa-history"></i>
+
+          <span>History</span>
+        </li>
+        <li>
+          <i className="sidebar_icon fas fa-cog"></i>
+
+          <span>Settings</span>
         </li>
       </ul>
     </div>

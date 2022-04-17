@@ -11,7 +11,7 @@ const Login = () => {
             <label htmlFor="email">Email Address</label>
             <input type="text" id="email" name="email" />
 
-            <label htmlFor="Password">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="text" name="password" id="password" />
           </div>
 

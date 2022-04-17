@@ -8,16 +8,36 @@ const Signup = () => {
           <h1>Signup</h1>
           <div className="input-group">
             <label htmlFor="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" />
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="John"
+            />
 
             <label htmlFor="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" />
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Doe"
+            />
 
             <label htmlFor="email">Email Address</label>
-            <input type="text" id="email" name="email" />
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="John@gmail.com"
+            />
 
             <label htmlFor="password">Password</label>
-            <input type="text" id="password" name="password" />
+            <input
+              type="text"
+              id="password"
+              name="password"
+              placeholder="password"
+            />
           </div>
           <div>
             <input type="checkbox" name="rememberMe" id="rememberMe" />

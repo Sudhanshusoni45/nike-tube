@@ -9,10 +9,20 @@ const Login = () => {
           <h1>Login</h1>
           <div className="input-group">
             <label htmlFor="email">Email Address</label>
-            <input type="text" id="email" name="email" />
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="John@gmail.com"
+            />
 
             <label htmlFor="password">Password</label>
-            <input type="text" name="password" id="password" />
+            <input
+              type="text"
+              name="password"
+              id="password"
+              placeholder="password"
+            />
           </div>
 
           <div>

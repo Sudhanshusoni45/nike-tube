@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./login.css";
 
 const Login = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setUser((prevUser) => ({ ...prevUser, [name]: value }));
+  };
   return (
     <>
       <div className="login_component">
-        <form action="" className="login_form">
+        <form action="" className="login_form" onSubmit={loginHandler}>
           <h1>Login</h1>
           <div className="input-group">
             <label htmlFor="email">Email Address</label>
@@ -14,6 +24,8 @@ const Login = () => {
               id="email"
               name="email"
               placeholder="John@gmail.com"
+              value={user.email}
+              onChange={changeHandler}
             />
 
             <label htmlFor="password">Password</label>
@@ -22,6 +34,8 @@ const Login = () => {
               name="password"
               id="password"
               placeholder="password"
+              value={user.password}
+              onChange={changeHandler}
             />
           </div>
 

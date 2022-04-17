@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MobileDrawer, Navbar } from "./components";
 import logo from "./logo.png";
-import { VideoListing } from "./pages";
+import { Login, Signup, VideoListing } from "./pages";
 
 function App() {
   return (
@@ -10,6 +10,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<VideoListing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <MobileDrawer />
     </div>

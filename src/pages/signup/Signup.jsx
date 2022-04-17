@@ -25,12 +25,12 @@ const Signup = () => {
               Remember me
             </label>
           </div>
-          <a href="">
+          <a href="#">
             <small>Forgot your password</small>
           </a>
           <Link to={"/login"}>Already have an account ? Login instead</Link>
 
-          <button className="btn login-btn">SignUp</button>
+          <button className="btn signup_btn">Signup</button>
         </form>
       </div>
     </>

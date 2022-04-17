@@ -1,0 +1,34 @@
+.sidebar_videogrid_container{
+    display: flex;
+}
+
+.videoCard_grid{
+    width: 100%;
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fill,80%);
+    justify-content: center;
+    margin-top: var(--space-xl);
+}
+
+
+
+
+@media screen and (max-width:1193px){
+    :root{
+        font-size: 85%;
+    }
+}
+
+@media screen and (max-width:1014px){
+    :root{
+        font-size:70%
+    }
+}
+
+@media screen and (min-width: 750px){
+    .videoCard_grid{
+        grid-template-columns: repeat(auto-fill,350px)
+    }
+
+}

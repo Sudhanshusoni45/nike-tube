@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 const Sidebar = () => {
@@ -21,7 +22,9 @@ const Sidebar = () => {
         </li>
         <li>
           <i className="sidebar_icon fas fa-bookmark watchlater_icon"></i>
-          <span>Watchlater</span>
+          <Link to={"/watchlater"}>
+            <span>Watchlater</span>
+          </Link>
         </li>
         <li>
           <i className="sidebar_icon fas fa-history"></i>

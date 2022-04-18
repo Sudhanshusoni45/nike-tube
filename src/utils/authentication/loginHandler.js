@@ -10,7 +10,7 @@ const loginHandler = async ({ user, authDispatch, navigate, location }) => {
         type: "LOGIN",
         payload: { token, user },
       });
-      navigate(location?.state?.from?.pathname);
+      navigate(location?.state?.from?.pathname || "/", { replace: true });
     }
   } catch (err) {
     console.log(err);

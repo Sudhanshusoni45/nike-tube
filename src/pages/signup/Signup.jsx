@@ -14,7 +14,7 @@ const Signup = () => {
   const { authDispatch } = useAuth();
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setUser((prevUser) => ({ ...prevUser, [name]: value }));
+    setNewUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
   const submitHandler = (e) => {
     e.preventDefault();

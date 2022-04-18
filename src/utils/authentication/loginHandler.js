@@ -1,7 +1,7 @@
 import { useAuth } from "../../context/auth-context";
 import { loginService } from "../../services";
 
-const loginHandler = async ({ user, authDispatch }) => {
+const loginHandler = async ({ user, authDispatch, navigate, location }) => {
   try {
     const response = await loginService(user);
     if (response.status === 200) {
@@ -10,6 +10,7 @@ const loginHandler = async ({ user, authDispatch }) => {
         type: "LOGIN",
         payload: { token, user },
       });
+      navigate(location?.state?.from?.pathname);
     }
   } catch (err) {
     console.log(err);

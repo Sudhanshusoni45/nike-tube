@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./signup.css";
 import { signupHandler } from "../../utils";
 import { useAuth } from "../../context/auth-context";
+
 const Signup = () => {
   const [newUser, setNewUser] = useState({
     firstName: "",

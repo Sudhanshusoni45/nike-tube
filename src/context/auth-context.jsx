@@ -2,9 +2,16 @@ import { createContext, useContext, useReducer } from "react";
 import { authReducer } from "../reducer";
 
 const AuthContext = createContext();
-const initialState = localStorage.getItem("token")
+const initialTokenState = localStorage.getItem("token")
   ? localStorage.getItem("token")
   : null;
+const initialUserState = localStorage.getItem("token")
+  ? localStorage.getItem("token")
+  : null;
+const initialState = {
+  token: initialTokenState,
+  user: initialUserState,
+};
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialState);
   return (

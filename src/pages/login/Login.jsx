@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./login.css";
 import { loginHandler } from "../../utils";
@@ -10,15 +10,13 @@ const Login = () => {
     password: "",
   });
   const { authDispatch } = useAuth();
-
-  console.log("login ran");
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(user);
-    loginHandler({ user, authDispatch });
+    loginHandler({ user, authDispatch, navigate, location });
   };
-
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setUser((prevUser) => ({ ...prevUser, [name]: value }));

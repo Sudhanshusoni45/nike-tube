@@ -11,6 +11,8 @@ const Login = () => {
   });
   const { authDispatch } = useAuth();
 
+  console.log("login ran");
+
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(user);

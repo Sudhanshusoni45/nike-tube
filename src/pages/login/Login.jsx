@@ -1,21 +1,37 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./login.css";
+import { loginHandler } from "../../utils";
+import { useAuth } from "../../context/auth-context";
 
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const { authDispatch } = useAuth();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(user);
+    loginHandler({ user, authDispatch });
+  };
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
+
+  const handleTestCredentials = (e) => {
+    setUser({
+      email: "adarshbalika@gmail.com",
+      password: "adarshBalika123",
+    });
+  };
   return (
     <>
       <div className="login_component">
-        <form action="" className="login_form" onSubmit={loginHandler}>
+        <form action="" className="login_form" onSubmit={submitHandler}>
           <h1>Login</h1>
           <div className="input-group">
             <label htmlFor="email">Email Address</label>
@@ -26,6 +42,7 @@ const Login = () => {
               placeholder="John@gmail.com"
               value={user.email}
               onChange={changeHandler}
+              required
             />
 
             <label htmlFor="password">Password</label>
@@ -36,6 +53,7 @@ const Login = () => {
               placeholder="password"
               value={user.password}
               onChange={changeHandler}
+              required
             />
           </div>
 
@@ -50,6 +68,9 @@ const Login = () => {
           </Link>
           <Link to={"/signup"}> New here? Create a new account </Link>
 
+          <button className="btn login_btn" onClick={handleTestCredentials}>
+            Test login
+          </button>
           <button className="btn login_btn">Login</button>
         </form>
       </div>

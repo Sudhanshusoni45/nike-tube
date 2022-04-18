@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { Card, Sidebar } from "../../components";
+import { getVideosHandler } from "../../utils";
 import "./videoListing.css";
 const VideoListing = () => {
+  useEffect(() => getVideosHandler(), []);
   return (
     <>
       <div className="sidebar_videogrid_container">

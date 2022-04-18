@@ -14,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(user);
     loginHandler({ user, authDispatch, navigate, location });
   };
   const changeHandler = (e) => {

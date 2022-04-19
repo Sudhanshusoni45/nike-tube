@@ -21,14 +21,19 @@ const Sidebar = () => {
           <span>Playlist</span>
         </li>
         <li>
-          <i className="sidebar_icon fas fa-bookmark watchlater_icon"></i>
           <Link to={"/watchlater"}>
+            <i className="sidebar_icon fas fa-bookmark watchlater_icon"></i>
             <span>Watchlater</span>
           </Link>
         </li>
         <li>
+          <Link to={"/liked"}>
+            <i className="sidebar_icon fas fa-thumbs-up"></i>
+            <span>Liked</span>
+          </Link>
+        </li>
+        <li>
           <i className="sidebar_icon fas fa-history"></i>
-
           <span>History</span>
         </li>
         <li>

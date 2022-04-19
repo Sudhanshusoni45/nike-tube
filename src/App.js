@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MobileDrawer, Navbar, RequiresAuth } from "./components";
 import logo from "./logo.png";
-import { Login, Signup, VideoListing, Watchlater } from "./pages";
+import { Liked, Login, Signup, VideoListing, Watchlater } from "./pages";
 
 function App() {
   return (
@@ -17,6 +17,14 @@ function App() {
           element={
             <RequiresAuth>
               <Watchlater />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/liked"
+          element={
+            <RequiresAuth>
+              <Liked />
             </RequiresAuth>
           }
         />

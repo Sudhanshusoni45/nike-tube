@@ -9,7 +9,6 @@ const Liked = () => {
   } = useAuth();
   const { likedState, likedDispatch } = useLiked();
   useEffect(() => getLikedVideoHandler({ token, likedDispatch }), []);
-  console.log(likedState);
   return <>Liked</>;
 };
 

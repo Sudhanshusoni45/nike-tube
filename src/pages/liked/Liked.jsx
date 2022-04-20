@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { Sidebar } from "../../components";
 import { useLiked } from "../../context";
 import { useAuth } from "../../context/auth-context";
 import { getLikedVideoHandler } from "../../utils/likedVideo/getLikedVideoHandler";
-
+import "./liked.css";
 const Liked = () => {
   const {
     authState: { token },
@@ -11,12 +12,17 @@ const Liked = () => {
   useEffect(() => getLikedVideoHandler({ token, likedDispatch }), []);
   return (
     <>
-      {likedState.map((item) => (
-        <>
-          <h1>{item.title}</h1>
-          <img src={item.thumbNail} alt="" />
-        </>
-      ))}
+      <div className="sidebar_likedVideos_container">
+        <Sidebar />
+        <div>
+          {likedState.map((item) => (
+            <>
+              <h1>{item.title}</h1>
+              <img src={item.thumbNail} alt="" />
+            </>
+          ))}
+        </div>
+      </div>
     </>
   );
 };

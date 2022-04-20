@@ -1,6 +1,5 @@
 import axios from "axios";
 const addToLikeVideoService = ({ video, token }) => {
-  console.log("video:", video);
   const url = "/api/user/likes";
   const data = { video };
   const config = {

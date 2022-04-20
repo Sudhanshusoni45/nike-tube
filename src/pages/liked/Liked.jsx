@@ -9,7 +9,16 @@ const Liked = () => {
   } = useAuth();
   const { likedState, likedDispatch } = useLiked();
   useEffect(() => getLikedVideoHandler({ token, likedDispatch }), []);
-  return <>Liked</>;
+  return (
+    <>
+      {likedState.map((item) => (
+        <>
+          <h1>{item.title}</h1>
+          <img src={item.thumbNail} alt="" />
+        </>
+      ))}
+    </>
+  );
 };
 
 export { Liked };

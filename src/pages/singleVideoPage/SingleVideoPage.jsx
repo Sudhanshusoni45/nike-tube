@@ -1,19 +1,49 @@
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getSingleVideoHandler } from "../../utils";
+import {
+  addToLikeVideoHandler,
+  getSingleVideoHandler,
+  removeFromLikeHandler,
+} from "../../utils";
+import { useAuth, useLiked } from "../../context";
+import "./singleVideoPage.css";
+import { Sidebar } from "../../components";
 const SingleVideoPage = () => {
   const [video, setVideo] = useState({});
+  const { likedState, likedDispatch } = useLiked();
+  const {
+    authState: { token },
+  } = useAuth();
   const { youtubeId } = video;
   const { _id } = useParams();
-  useEffect(() => getSingleVideoHandler({ _id, setVideo }));
+  const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
+  const likeHandler = (_id) => {
+    const isLiked = checkIsLiked(_id);
+    isLiked
+      ? removeFromLikeHandler({ _id, token, likedDispatch })
+      : addToLikeVideoHandler({ _id, token, video, likedDispatch });
+  };
+
+  useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);
   return (
     <>
-      <ReactPlayer
-        url={`https://www.youtube.com/embed/${youtubeId}`}
-        controls={true}
-      />
-      <i className="fas fa-thumbs-up"></i>
+      <div className="sidebar_reactPlayer_container">
+        <Sidebar />
+        <div>
+          <ReactPlayer
+            url={`https://www.youtube.com/embed/${youtubeId}`}
+            controls={true}
+          />
+          <div className="action_btns">
+            <i
+              className={`${checkIsLiked(_id) ? "fas" : "far"} fa-thumbs-up`}
+              onClick={() => likeHandler(_id)}
+            ></i>
+            <i className={`far fa-bookmark`}></i>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

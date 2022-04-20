@@ -12,6 +12,7 @@ export const videos = [
     channelName: "Unbox Therapy",
     thumbNail:
       "https://i.ytimg.com/vi/hViOYZVMiWs/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBhFwDqMDZDO8kvHLlH69w7kLaBYw",
+    youtubeId: "hViOYZVMiWs",
   },
   {
     _id: "N_Ribqdh2oM",
@@ -21,6 +22,7 @@ export const videos = [
     channelName: "Nike",
     thumbNail:
       "https://i.ytimg.com/vi/BUvEEVq4woU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBzNjh-jWwCZKYnU2idc7hSuGW3Pg",
+    youtubeId: "BUvEEVq4woU",
   },
   {
     _id: "F_Riqjdh2oM",
@@ -29,6 +31,7 @@ export const videos = [
     channelName: "Marques Brownlee",
     thumbNail:
       "https://i.ytimg.com/vi/xQLb_uwWzj8/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC4555O7MEVFSeRQ3FmH1UVvKZRRg",
+    youtubeId: "xQLb_uwWzj8",
   },
   {
     _id: "N_Ribqdh2oM",
@@ -38,5 +41,6 @@ export const videos = [
     channelName: "Unbox Therpary",
     thumbNail:
       "https://i.ytimg.com/vi/vgyJQ_bzpCY/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCzJBcdXaNHoVBoLwpqh1ucnMlXCQ",
+    youtubeId: "vgyJQ_bzpCY",
   },
 ];

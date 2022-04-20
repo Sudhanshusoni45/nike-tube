@@ -34,7 +34,7 @@ function App() {
             </RequiresAuth>
           }
         />
-        <Route path="/singlevideopage" element={<SingleVideoPage />} />
+        <Route path="/singlevideopage/:_id" element={<SingleVideoPage />} />
       </Routes>
       <MobileDrawer />
     </div>

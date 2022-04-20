@@ -1,11 +1,16 @@
 import ReactPlayer from "react-player";
-
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getSingleVideoHandler } from "../../utils";
 const SingleVideoPage = () => {
+  const [video, setVideo] = useState({});
+  const { youtubeId } = video;
+  const { _id } = useParams();
+  useEffect(() => getSingleVideoHandler({ _id, setVideo }));
   return (
     <>
-      <p>Single vid page</p>
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=4VxdufqB9zg"
+        url={`https://www.youtube.com/embed/${youtubeId}`}
         controls={true}
       />
       <i className="fas fa-thumbs-up"></i>

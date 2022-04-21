@@ -13,7 +13,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <LikedContextProvider>
-          <App />
+          <WatchlaterProvider>
+            <App />
+          </WatchlaterProvider>
         </LikedContextProvider>
       </AuthProvider>
     </BrowserRouter>

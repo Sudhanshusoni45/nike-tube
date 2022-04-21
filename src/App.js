@@ -1,8 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MobileDrawer, Navbar, RequiresAuth } from "./components";
-import logo from "./logo.png";
-import { Login, Signup, VideoListing, Watchlater } from "./pages";
+import {
+  Liked,
+  Login,
+  Signup,
+  SingleVideoPage,
+  VideoListing,
+  Watchlater,
+} from "./pages";
 
 function App() {
   return (
@@ -20,6 +26,15 @@ function App() {
             </RequiresAuth>
           }
         />
+        <Route
+          path="/liked"
+          element={
+            <RequiresAuth>
+              <Liked />
+            </RequiresAuth>
+          }
+        />
+        <Route path="/singlevideopage/:_id" element={<SingleVideoPage />} />
       </Routes>
       <MobileDrawer />
     </div>

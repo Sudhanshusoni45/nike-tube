@@ -5,9 +5,9 @@ const authReducer = (state, action) => {
   } = action;
   switch (type) {
     case "LOGIN":
-      return { ...state, token, user };
+      return { token, user };
     case "SIGNUP":
-      return { ...state, token, user };
+      return { token, user };
   }
 };
 

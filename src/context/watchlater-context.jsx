@@ -10,4 +10,6 @@ const WatchlaterProvider = ({ children }) => {
   );
 };
 
-export { WatchlaterProvider };
+const useWatchlater = () => useContext(WatchlaterContext);
+
+export { WatchlaterProvider, useWatchlater };

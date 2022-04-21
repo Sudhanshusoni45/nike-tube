@@ -11,7 +11,12 @@ const Watchlater = () => {
   return (
     <>
       {watchlaterState.length !== 0 ? (
-        watchlaterState.map((item) => <h1>{item.title}</h1>)
+        watchlaterState.map((item) => (
+          <li key={item._id} className="list_reset">
+            <h1>{item.title}</h1>
+            <img src={item.thumbNail} alt="" />
+          </li>
+        ))
       ) : (
         <h1>There is nothing in your watchlist...</h1>
       )}

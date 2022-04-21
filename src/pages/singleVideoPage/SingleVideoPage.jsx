@@ -20,7 +20,7 @@ const SingleVideoPage = () => {
   const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
   const likeHandler = (_id) => {
     if (token === null) {
-      alert("Please login to like a video");
+      alert("login to like a video");
     } else {
       const isLiked = checkIsLiked(_id);
       isLiked

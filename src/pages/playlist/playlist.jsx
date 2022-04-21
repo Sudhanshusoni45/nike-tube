@@ -1,3 +1,3 @@
-const playlist = () => {};
+const Playlist = () => {};
 
-export { playlist };
+export { Playlist };

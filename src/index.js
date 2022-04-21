@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import {
   AuthProvider,
   LikedContextProvider,
+  PlaylistProvider,
   WatchlaterProvider,
 } from "./context";
 
@@ -18,7 +19,9 @@ ReactDOM.render(
       <AuthProvider>
         <LikedContextProvider>
           <WatchlaterProvider>
-            <App />
+            <PlaylistProvider>
+              <App />
+            </PlaylistProvider>
           </WatchlaterProvider>
         </LikedContextProvider>
       </AuthProvider>

@@ -6,3 +6,5 @@ export { useLiked } from "./liked-context";
 
 export { WatchlaterProvider } from "./watchlater-context";
 export { useWatchlater } from "./watchlater-context";
+
+export { PlaylistProvider } from "./playlist-context";

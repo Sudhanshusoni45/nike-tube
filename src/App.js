@@ -4,6 +4,7 @@ import { MobileDrawer, Navbar, RequiresAuth } from "./components";
 import {
   Liked,
   Login,
+  Playlist,
   Signup,
   SingleVideoPage,
   VideoListing,
@@ -31,6 +32,14 @@ function App() {
           element={
             <RequiresAuth>
               <Liked />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/playlist"
+          element={
+            <RequiresAuth>
+              <Playlist />
             </RequiresAuth>
           }
         />

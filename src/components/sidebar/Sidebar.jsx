@@ -11,9 +11,10 @@ const Sidebar = () => {
           <span>Home</span>
         </li>
         <li>
-          <i className="sidebar_icon fas fa-compass"></i>
-
-          <span>Explore</span>
+          <Link to={"/"}>
+            <i className="sidebar_icon fas fa-compass"></i>
+            <span>Explore</span>
+          </Link>
         </li>
         <li>
           <i className="sidebar_icon fas fa-list-ul"></i>

@@ -8,7 +8,7 @@ const getLikedVideoHandler = async ({ token, likedDispatch }) => {
       likedDispatch({ type: "GET_LIKES", payload: data });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 const Sidebar = () => {
@@ -10,9 +11,10 @@ const Sidebar = () => {
           <span>Home</span>
         </li>
         <li>
-          <i className="sidebar_icon fas fa-compass"></i>
-
-          <span>Explore</span>
+          <Link to={"/"}>
+            <i className="sidebar_icon fas fa-compass"></i>
+            <span>Explore</span>
+          </Link>
         </li>
         <li>
           <i className="sidebar_icon fas fa-list-ul"></i>
@@ -20,12 +22,19 @@ const Sidebar = () => {
           <span>Playlist</span>
         </li>
         <li>
-          <i className="sidebar_icon fas fa-bookmark watchlater_icon"></i>
-          <span>Watchlater</span>
+          <Link to={"/watchlater"}>
+            <i className="sidebar_icon fas fa-bookmark watchlater_icon"></i>
+            <span>Watchlater</span>
+          </Link>
+        </li>
+        <li>
+          <Link to={"/liked"}>
+            <i className="sidebar_icon fas fa-thumbs-up"></i>
+            <span>Liked</span>
+          </Link>
         </li>
         <li>
           <i className="sidebar_icon fas fa-history"></i>
-
           <span>History</span>
         </li>
         <li>

@@ -1,0 +1,7 @@
+.action_btns {
+    font-size: 2rem;
+    cursor: pointer;
+}
+.sidebar_reactPlayer_container{
+    display: flex;
+}

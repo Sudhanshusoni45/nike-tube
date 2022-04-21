@@ -7,7 +7,6 @@ const addToWatchlaterHandler = async ({ token, watchlaterDispatch, video }) => {
       video,
       watchlaterDispatch,
     });
-    console.log("response from addToWatchlater:", response);
     if (response.status === 201) {
       const { data } = response;
       watchlaterDispatch({ type: "ADD_TO_WATCHLATER", payload: data });

@@ -6,6 +6,7 @@ import {
   addToWatchlaterHandler,
   getSingleVideoHandler,
   removeFromLikeHandler,
+  removeFromWatchlaterHandler,
 } from "../../utils";
 import { useAuth, useLiked, useWatchlater } from "../../context";
 import "./singleVideoPage.css";
@@ -38,7 +39,7 @@ const SingleVideoPage = () => {
       alert("please login to add a video to wathclater");
     } else {
       checkInWatchlater(_id)
-        ? null
+        ? removeFromWatchlaterHandler({ watchlaterDispatch, _id, token })
         : addToWatchlaterHandler({ video, watchlaterDispatch, token });
     }
   };

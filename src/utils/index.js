@@ -6,3 +6,4 @@ export { getSingleVideoHandler } from "./videos/getSingleVideoHandler";
 export { removeFromLikeHandler } from "./likedVideo/removeFromLikeHandler";
 export { getWatchlaterVideoHandler } from "./watchlater/getWatchlaterVideoHandler";
 export { addToWatchlaterHandler } from "./watchlater/addToWatchlaterHandler";
+export { removeFromWatchlaterHandler } from "./watchlater/removeFromWatchlaterHandler";

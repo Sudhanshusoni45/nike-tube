@@ -7,7 +7,7 @@ const Watchlater = () => {
   } = useAuth();
   const { watchlaterState, watchlaterDispatch } = useWatchlater();
   useEffect(() => getWatchlaterVideoHandler({ token, watchlaterDispatch }), []);
-  useEffect(() => console.log("watchlaterState", watchlaterState));
+
   return (
     <>
       {watchlaterState.length !== 0 ? (

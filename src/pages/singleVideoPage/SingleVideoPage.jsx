@@ -28,6 +28,7 @@ const SingleVideoPage = () => {
         : addToLikeVideoHandler({ _id, token, video, likedDispatch });
     }
   };
+  const watchlaterHandler = () => {};
 
   useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);
   return (
@@ -44,7 +45,7 @@ const SingleVideoPage = () => {
               className={`${checkIsLiked(_id) ? "fas" : "far"} fa-thumbs-up`}
               onClick={() => likeHandler(_id)}
             ></i>
-            <i className={`far fa-bookmark`}></i>
+            <i className={`far fa-bookmark`} onClick={watchlaterHandler}></i>
           </div>
         </div>
       </div>

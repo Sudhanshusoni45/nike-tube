@@ -10,7 +10,7 @@ const getVideosHandler = async (setExploreVideos) => {
       setExploreVideos((prevVideos) => [...prevVideos, ...videos]);
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

@@ -8,7 +8,7 @@ const addToLikeVideoHandler = async ({ token, likedDispatch, video }) => {
       likedDispatch({ type: "ADD_TO_LIKE", payload: data });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

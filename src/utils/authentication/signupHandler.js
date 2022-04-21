@@ -8,7 +8,7 @@ const signupHandler = async ({ authDispatch, newUser }) => {
       authDispatch({ type: "SIGNUP", payload: { token, user } });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

@@ -15,7 +15,7 @@ const loginHandler = async ({ user, authDispatch, navigate, location }) => {
       navigate(location?.state?.from?.pathname || "/", { replace: true });
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

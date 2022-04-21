@@ -19,10 +19,14 @@ const SingleVideoPage = () => {
   const { _id } = useParams();
   const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
   const likeHandler = (_id) => {
-    const isLiked = checkIsLiked(_id);
-    isLiked
-      ? removeFromLikeHandler({ _id, token, likedDispatch })
-      : addToLikeVideoHandler({ _id, token, video, likedDispatch });
+    if (token === null) {
+      alert("Please login to like a video");
+    } else {
+      const isLiked = checkIsLiked(_id);
+      isLiked
+        ? removeFromLikeHandler({ _id, token, likedDispatch })
+        : addToLikeVideoHandler({ _id, token, video, likedDispatch });
+    }
   };
 
   useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);

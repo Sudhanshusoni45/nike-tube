@@ -6,3 +6,4 @@ export { addToLikeVideoService } from "./likedVideo/addToLikeVideo.service";
 export { getSingleVideoService } from "./videos/getSingleVideo.service";
 export { removeFromLikeService } from "./likedVideo/removeFromLike.service";
 export { getWatchlaterVideoService } from "./watchlater/getWatchlaterVideo.service";
+export { addToWatchlaterService } from "./watchlater/addToWatchlater.service";

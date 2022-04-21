@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { playlistReducer } from "../reducer";
 
 const PlaylistContext = createContext();
 const initialState = [];
@@ -14,4 +15,6 @@ const PlaylistProvider = ({ children }) => {
   );
 };
 
-export { PlaylistProvider };
+const usePlaylist = () => useContext(PlaylistContext);
+
+export { PlaylistProvider, usePlaylist };

@@ -8,3 +8,4 @@ export { removeFromLikeService } from "./likedVideo/removeFromLike.service";
 export { getWatchlaterVideoService } from "./watchlater/getWatchlaterVideo.service";
 export { addToWatchlaterService } from "./watchlater/addToWatchlater.service";
 export { removeFromWatchlaterService } from "./watchlater/removeFromWatchlater.service";
+export { getPlaylistService } from "./playlist/getPlaylist.service";

@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Card, Sidebar } from "../../components";
 import { useAuth, useLiked } from "../../context";
 import { addToLikeVideoHandler, getVideosHandler } from "../../utils";
 import "./videoListing.css";
 const VideoListing = () => {
-  useEffect(() => getVideosHandler(), []);
+  const [exploreVideos, setExploreVideos] = useState([]);
+
+  useEffect(() => getVideosHandler(setExploreVideos), []);
   const {
     authState: { token },
   } = useAuth();
@@ -21,28 +23,21 @@ const VideoListing = () => {
 
   return (
     <>
-      <button
-        className="btn"
-        onClick={() => addToLikeVideoHandler({ video, likedDispatch, token })}
-      >
-        Test add to Like
-      </button>
       <div className="sidebar_videogrid_container">
         <Sidebar />
         <div className="videoCard_grid">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {exploreVideos.length !== 0
+            ? exploreVideos.map(({ _id, title, channelName, thumbNail }) => (
+                <li key={_id} className="list_reset">
+                  <Card
+                    _id={_id}
+                    title={title}
+                    channelName={channelName}
+                    thumbNail={thumbNail}
+                  />
+                </li>
+              ))
+            : null}
         </div>
       </div>
     </>

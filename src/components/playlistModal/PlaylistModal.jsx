@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./playlistModal.css";
 
 const PlaylistModal = () => {
@@ -18,8 +19,21 @@ const PlaylistModal = () => {
             </ul>
           </div>
           <div className="modal_footer">
-            <i className="fas fa-plus"></i>
-            <span> Create a new playlist</span>
+            {true ? (
+              <div className="input-group">
+                <input
+                  type="text"
+                  name="newPlaylistName"
+                  id="newPlaylistName"
+                  placeholder="Enter playlist name..."
+                  className="newPlaylistName_input"
+                />
+              </div>
+            ) : null}
+            <div>
+              <i className="fas fa-plus"></i>
+              <button className="only_text_btn"> Create a new playlist</button>
+            </div>
           </div>
         </div>
       </div>

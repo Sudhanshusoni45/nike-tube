@@ -7,19 +7,6 @@ const VideoListing = () => {
   const [exploreVideos, setExploreVideos] = useState([]);
 
   useEffect(() => getVideosHandler(setExploreVideos), []);
-  const {
-    authState: { token },
-  } = useAuth();
-
-  const { likedDispatch } = useLiked();
-
-  const video = {
-    _id: 21,
-    title: "test video",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    creator: "Nike",
-  };
 
   return (
     <>

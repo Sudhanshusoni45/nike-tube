@@ -4,3 +4,7 @@
 .list_reset{
 list-style: none;
 }
+.only_text_btn{
+    background: transparent;
+    border: 0px ;
+}

@@ -21,9 +21,11 @@
 .modal_header, .modal_footer{
     padding: var(--space-xs);
 }
-/* .modal_close_btn{} */
 .modal_body{
     padding: var(--space-xs);
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
+}
+.modal_footer .newPlaylistName_input{
+    width: 12rem;
 }

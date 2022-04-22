@@ -1,6 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { MobileDrawer, Navbar, RequiresAuth } from "./components";
+import {
+  MobileDrawer,
+  Navbar,
+  PlaylistModal,
+  RequiresAuth,
+} from "./components";
 import {
   Liked,
   Login,
@@ -44,6 +49,7 @@ function App() {
           }
         />
         <Route path="/singlevideopage/:_id" element={<SingleVideoPage />} />
+        <Route path="/modal" element={<PlaylistModal />} />
       </Routes>
       <MobileDrawer />
     </div>

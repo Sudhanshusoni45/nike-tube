@@ -9,3 +9,4 @@ export { getWatchlaterVideoService } from "./watchlater/getWatchlaterVideo.servi
 export { addToWatchlaterService } from "./watchlater/addToWatchlater.service";
 export { removeFromWatchlaterService } from "./watchlater/removeFromWatchlater.service";
 export { getPlaylistService } from "./playlist/getPlaylist.service";
+export { addToPlaylistService } from "./playlist/addToPlaylist.service";

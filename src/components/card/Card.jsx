@@ -10,6 +10,15 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
     >
       <div className="videoCard">
         <img src={thumbNail} alt="" className="videoCard_thumbnail" />
+        <div className="card_action_btns_container ">
+          <button className="transparent_btn card_action_btn">
+            <i className="far fa-bookmark action_icon"></i>
+          </button>
+
+          <button className="transparent_btn card_action_btn">
+            <i className="fas fa-folder-plus action_icon"></i>
+          </button>
+        </div>
       </div>
       <div className="videoCard_body">
         <img

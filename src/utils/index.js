@@ -8,3 +8,5 @@ export { getWatchlaterVideoHandler } from "./watchlater/getWatchlaterVideoHandle
 export { addToWatchlaterHandler } from "./watchlater/addToWatchlaterHandler";
 export { removeFromWatchlaterHandler } from "./watchlater/removeFromWatchlaterHandler";
 export { getPlaylistHandler } from "./playlist/getPlaylistHandler";
+export { showPlaylistModalHandler } from "./playlistModal/showPlaylistModalHandler";
+export { hidePlaylistModalHandler } from "./playlistModal/hidePlaylistModalHandler";

@@ -1,8 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { usePlaylistModal } from "../../context";
+import { showPlaylistModalHandler } from "../../utils";
 import "./card.css";
 
 const Card = ({ _id, title, channelName, thumbNail }) => {
   const navigate = useNavigate();
+  const { playlistModalDispatch } = usePlaylistModal();
+  const playlistIconClickHandler = () => {
+    showPlaylistModalHandler(playlistModalDispatch);
+  };
   return (
     <div
       className="videoCard_container"
@@ -11,11 +17,21 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
       <div className="videoCard">
         <img src={thumbNail} alt="" className="videoCard_thumbnail" />
         <div className="card_action_btns_container ">
-          <button className="transparent_btn card_action_btn">
+          <button
+            className="transparent_btn card_action_btn"
+            onClick={(e) => e.stopPropagation()}
+          >
             <i className="far fa-bookmark action_icon"></i>
           </button>
 
-          <button className="transparent_btn card_action_btn">
+          <button
+            title="playlist"
+            className="transparent_btn card_action_btn"
+            onClick={(e) => {
+              playlistIconClickHandler();
+              e.stopPropagation();
+            }}
+          >
             <i className="fas fa-folder-plus action_icon"></i>
           </button>
         </div>

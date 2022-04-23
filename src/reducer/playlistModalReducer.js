@@ -3,9 +3,11 @@ const playlistModalReducer = (
   { type, payload: { showPlaylistModal, showNewPlaylistInput } }
 ) => {
   switch (type) {
-    case "TOGGLE_MODAL_VIEW":
+    case "SHOW_PLAYLIST_MODAL":
       return { ...state, showPlaylistModal };
-    case "TOGGLE_MODAL_NEWPLAYLIST_INPUT":
+    case "HIDE_PLAYLIST_MODAL":
+      return { ...state, showPlaylistModal };
+    case "TOGGLE_NEWPLAYLIST_INPUT":
       return { ...state, showNewPlaylistInput };
   }
 };

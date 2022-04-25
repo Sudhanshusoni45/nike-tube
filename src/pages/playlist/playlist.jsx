@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { Sidebar, PlaylistTile } from "../../components";
 import { useAuth, usePlaylist } from "../../context";
 import { getPlaylistHandler } from "../../utils";
+import "./playlist.css";
 
 const Playlist = () => {
   const {
@@ -12,11 +14,20 @@ const Playlist = () => {
 
   return (
     <>
-      {playlistState.length !== 0 ? (
-        playlistState.map((item) => <>item</>)
-      ) : (
-        <h1>You dont have any playlist yet...</h1>
-      )}
+      <div className="playlist_sidebar_container">
+        <Sidebar />
+        <div className="playlist_tile_container">
+          {playlistState.length !== 0 ? (
+            playlistState.map(({ title }) => (
+              <li className="list_reset playlist_tile_list">
+                <PlaylistTile title={title} />
+              </li>
+            ))
+          ) : (
+            <h1>You dont have any playlist yet...</h1>
+          )}
+        </div>
+      </div>
     </>
   );
 };

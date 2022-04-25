@@ -1,8 +1,12 @@
 import { addToPlaylistService } from "../../services";
 
-const addToPlaylistHandler = async ({ token, playlistDispatch }) => {
+const addToPlaylistHandler = async ({
+  token,
+  playlistDispatch,
+  newPlaylistTitle,
+}) => {
   try {
-    const response = addToPlaylistService(token);
+    const response = await addToPlaylistService({ token, newPlaylistTitle });
     console.log("response:", response);
     if (response.status === 201) {
       const { data } = response;

@@ -10,3 +10,4 @@ export { removeFromWatchlaterHandler } from "./watchlater/removeFromWatchlaterHa
 export { getPlaylistHandler } from "./playlist/getPlaylistHandler";
 export { showPlaylistModalHandler } from "./playlistModal/showPlaylistModalHandler";
 export { hidePlaylistModalHandler } from "./playlistModal/hidePlaylistModalHandler";
+export { addToPlaylistHandler } from "./playlist/addToPlaylistHandler";

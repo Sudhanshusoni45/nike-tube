@@ -1,20 +1,33 @@
-import { useState } from "react";
-import { usePlaylistModal } from "../../context";
-import { hidePlaylistModalHandler } from "../../utils";
+import { useState, useEffect } from "react";
+import { useAuth, usePlaylist, usePlaylistModal } from "../../context";
+import { addToPlaylistHandler, hidePlaylistModalHandler } from "../../utils";
 import "./playlistModal.css";
 
 const PlaylistModal = () => {
   const { playlistModalState, playlistModalDispatch } = usePlaylistModal();
-  const [newPlaylistName, setNewPlaylistName] = useState("");
+  const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
+  const {
+    authState: { token },
+  } = useAuth();
+  const { playlistState, playlistDispatch } = usePlaylist();
   const { showNewPlaylistInput } = playlistModalState;
   const changeHandler = (e) => {
-    setNewPlaylistName((prevName) => e.target.value);
+    console.log(e.target.value);
+    setNewPlaylistTitle((prevName) => e.target.value);
   };
-  const createNewPlaylistHandler = () => {
+  useEffect(() => console.log("playlistState", playlistState));
+  const newPlaylistInputHandler = () => {
     playlistModalDispatch({
       type: "TOGGLE_NEWPLAYLIST_INPUT",
       payload: { showNewPlaylistInput: true },
     });
+  };
+  const addNewPlaylistHandler = () => {
+    playlistModalDispatch({
+      type: "TOGGLE_NEWPLAYLIST_INPUT",
+      payload: { showNewPlaylistInput: false },
+    });
+    addToPlaylistHandler({ token, playlistDispatch, newPlaylistTitle });
   };
   const closeBtnHandler = () => {
     hidePlaylistModalHandler(playlistModalDispatch);
@@ -27,7 +40,7 @@ const PlaylistModal = () => {
             <h4 className="modal_title">Save to...</h4>
             <button
               title="closeBtn"
-              className="transparent_btn"
+              className="transparent_btn modal_close_btn"
               onClick={closeBtnHandler}
             >
               <i className="fas fa-times modal_close_btn"></i>
@@ -35,10 +48,16 @@ const PlaylistModal = () => {
           </div>
           <div className="modal_body">
             <ul className="list_reset">
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="">Dummy playlist</label>
-              </li>
+              {playlistState.length !== 0 ? (
+                playlistState.map(({ _id, title }) => (
+                  <li key={_id}>
+                    <input type="checkbox" name={title} id={title} />
+                    <label htmlFor={title}>{title}</label>
+                  </li>
+                ))
+              ) : (
+                <li>You have not created any playlist...</li>
+              )}
             </ul>
           </div>
           <div className="modal_footer">
@@ -46,25 +65,33 @@ const PlaylistModal = () => {
               <div className="input-group">
                 <input
                   type="text"
-                  name="newPlaylistName"
-                  id="newPlaylistName"
+                  name="newPlaylistTitle"
+                  id="newPlaylistTitle"
                   placeholder="Enter playlist name..."
                   className="newPlaylistName_input"
                   onChange={changeHandler}
-                  value={newPlaylistName}
+                  value={newPlaylistTitle}
                 />
+                <button
+                  title="create"
+                  className="transparent_btn"
+                  onClick={addNewPlaylistHandler}
+                >
+                  create
+                </button>
               </div>
             ) : null}
-            <div>
-              <i className="fas fa-plus"></i>
-              <button
-                className="transparent_btn"
-                onClick={createNewPlaylistHandler}
-              >
-                {" "}
-                Create a new playlist
-              </button>
-            </div>
+            {!showNewPlaylistInput ? (
+              <div>
+                <button
+                  className="transparent_btn"
+                  onClick={newPlaylistInputHandler}
+                >
+                  <i className="fas fa-plus"></i>
+                  Create a new playlist
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

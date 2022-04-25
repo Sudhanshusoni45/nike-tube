@@ -17,9 +17,10 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <i className="sidebar_icon fas fa-list-ul"></i>
-
-          <span>Playlist</span>
+          <Link to={"/playlist"}>
+            <i className="sidebar_icon fas fa-list-ul"></i>
+            <span>Playlist</span>
+          </Link>
         </li>
         <li>
           <Link to={"/watchlater"}>

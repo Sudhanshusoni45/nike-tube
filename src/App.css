@@ -7,4 +7,9 @@ list-style: none;
 .transparent_btn{
     background: transparent;
     border: 0px ;
+    cursor: pointer;
 }
+.display_inline_block{
+    display: inline-block;
+}
+

@@ -12,3 +12,5 @@ export { showPlaylistModalHandler } from "./playlistModal/showPlaylistModalHandl
 export { hidePlaylistModalHandler } from "./playlistModal/hidePlaylistModalHandler";
 export { addToPlaylistHandler } from "./playlist/addToPlaylistHandler";
 export { addVideoToPlaylistHandler } from "./playlist/addVideoToPlaylistHandler";
+export { getSinglePlaylistHandler } from "./playlist/getSinglePlaylistHandler";
+export { deleteVideoFromPlaylistHandler } from "./playlist/deleteVideoFromPlaylistHandler";

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth, usePlaylist, usePlaylistModal } from "../../context";
 import {
   addToPlaylistHandler,
@@ -22,7 +22,6 @@ const PlaylistModal = () => {
   const changeHandler = (e) => {
     setNewPlaylistTitle((prevName) => e.target.value);
   };
-  useEffect(() => console.log("playlistState", playlistState));
   const newPlaylistInputHandler = () => {
     playlistModalDispatch({
       type: "TOGGLE_NEWPLAYLIST_INPUT",

@@ -11,3 +11,5 @@ export { removeFromWatchlaterService } from "./watchlater/removeFromWatchlater.s
 export { getPlaylistService } from "./playlist/getPlaylist.service";
 export { addToPlaylistService } from "./playlist/addToPlaylist.service";
 export { addVideoToPlaylistService } from "./playlist/addVideoToPlaylist.service";
+export { getSinglePlaylistService } from "./playlist/getSinglePlaylist.service";
+export { deleteVideoFromPlaylistService } from "./playlist/deleteVideoFromPlaylist.service";

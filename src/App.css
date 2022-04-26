@@ -12,4 +12,7 @@ list-style: none;
 .display_inline_block{
     display: inline-block;
 }
+.display_flex{
+    display: flex;
+}
 

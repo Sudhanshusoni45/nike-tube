@@ -1,6 +1,6 @@
 const playlistReducer = (
   playlistState,
-  { type, payload: { playlists, playlist: playlistData, playlist } }
+  { type, payload: { playlists, playlist: playlistData } }
 ) => {
   const getUpdatedPlaylist = () => {
     return playlistState.reduce(
@@ -15,6 +15,8 @@ const playlistReducer = (
     case "ADD_TO_PLAYLIST":
       return [...playlists];
     case "ADD_VIDEO_TO_PLAYLIST":
+      return [...getUpdatedPlaylist()];
+    case "DELETE_VIDEO_FROM_PLAYLIST":
       return [...getUpdatedPlaylist()];
   }
 };

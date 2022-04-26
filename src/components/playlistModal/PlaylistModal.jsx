@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import { useAuth, usePlaylist, usePlaylistModal } from "../../context";
-import { addToPlaylistHandler, hidePlaylistModalHandler } from "../../utils";
+import {
+  addToPlaylistHandler,
+  addVideoToPlaylistHandler,
+  hidePlaylistModalHandler,
+} from "../../utils";
 import "./playlistModal.css";
 
 const PlaylistModal = () => {
-  const { playlistModalState, playlistModalDispatch } = usePlaylistModal();
+  const {
+    playlistModalState,
+    playlistModalState: { video },
+    playlistModalDispatch,
+  } = usePlaylistModal();
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
   const {
     authState: { token },
@@ -12,7 +20,6 @@ const PlaylistModal = () => {
   const { playlistState, playlistDispatch } = usePlaylist();
   const { showNewPlaylistInput } = playlistModalState;
   const changeHandler = (e) => {
-    console.log(e.target.value);
     setNewPlaylistTitle((prevName) => e.target.value);
   };
   useEffect(() => console.log("playlistState", playlistState));
@@ -32,6 +39,22 @@ const PlaylistModal = () => {
   const closeBtnHandler = () => {
     hidePlaylistModalHandler(playlistModalDispatch);
   };
+  const checkboxHandler = (playlistId) => {
+    checkVideoInPlaylist(playlistId)
+      ? alert("video already in playlist")
+      : addVideoToPlaylistHandler({
+          token,
+          video,
+          playlistDispatch,
+          playlistId,
+        });
+  };
+  const checkVideoInPlaylist = (playlistId) => {
+    const playlist = playlistState.find((item) => item._id === playlistId);
+    if (playlist) {
+      return playlist.videos.some((item) => item._id === video._id);
+    } else return false;
+  };
   return (
     <>
       <div className="modal">
@@ -49,9 +72,15 @@ const PlaylistModal = () => {
           <div className="modal_body">
             <ul className="list_reset">
               {playlistState.length !== 0 ? (
-                playlistState.map(({ _id, title }) => (
-                  <li key={_id}>
-                    <input type="checkbox" name={title} id={title} />
+                playlistState.map(({ _id: playlistId, title }) => (
+                  <li key={playlistId}>
+                    <input
+                      type="checkbox"
+                      name={title}
+                      id={title}
+                      checked={checkVideoInPlaylist(playlistId)}
+                      onChange={() => checkboxHandler(playlistId)}
+                    />
                     <label htmlFor={title}>{title}</label>
                   </li>
                 ))

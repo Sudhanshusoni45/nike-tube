@@ -7,7 +7,6 @@ const addToPlaylistHandler = async ({
 }) => {
   try {
     const response = await addToPlaylistService({ token, newPlaylistTitle });
-    console.log("response:", response);
     if (response.status === 201) {
       const { data } = response;
       playlistDispatch({ type: "ADD_TO_PLAYLIST", payload: data });

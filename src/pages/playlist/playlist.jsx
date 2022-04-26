@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Sidebar, PlaylistTile } from "../../components";
 import { useAuth, usePlaylist } from "../../context";
 import { getPlaylistHandler } from "../../utils";
@@ -10,7 +11,10 @@ const Playlist = () => {
   } = useAuth();
   const { playlistState, playlistDispatch } = usePlaylist();
   useEffect(() => getPlaylistHandler({ token, playlistDispatch }), []);
-  useEffect(() => console.log(playlistState));
+  const Navigate = useNavigate();
+  const clickHandler = (playlistId) => {
+    Navigate(`/singleplaylist/${playlistId}`);
+  };
 
   return (
     <>
@@ -18,8 +22,12 @@ const Playlist = () => {
         <Sidebar />
         <div className="playlist_tile_container">
           {playlistState.length !== 0 ? (
-            playlistState.map(({ title }) => (
-              <li className="list_reset playlist_tile_list">
+            playlistState.map(({ title, _id: playlistId }) => (
+              <li
+                className="list_reset playlist_tile_list"
+                key={playlistId}
+                onClick={() => clickHandler(playlistId)}
+              >
                 <PlaylistTile title={title} />
               </li>
             ))

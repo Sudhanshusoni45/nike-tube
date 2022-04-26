@@ -10,9 +10,9 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
   } = useAuth();
   const { playlistModalDispatch } = usePlaylistModal();
 
-  const playlistIconClickHandler = () => {
+  const playlistIconClickHandler = (video) => {
     if (token !== null) {
-      showPlaylistModalHandler(playlistModalDispatch);
+      showPlaylistModalHandler({ playlistModalDispatch, video });
     } else {
       alert("Login to add to playlist");
     }
@@ -37,7 +37,7 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
             title="playlist"
             className="transparent_btn card_action_btn"
             onClick={(e) => {
-              playlistIconClickHandler();
+              playlistIconClickHandler({ _id, title, channelName, thumbNail });
               e.stopPropagation();
             }}
           >

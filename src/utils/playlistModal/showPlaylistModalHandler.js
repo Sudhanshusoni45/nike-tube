@@ -1,7 +1,7 @@
-const showPlaylistModalHandler = (playlistModalDispatch) => {
+const showPlaylistModalHandler = ({ playlistModalDispatch, video }) => {
   playlistModalDispatch({
     type: "SHOW_PLAYLIST_MODAL",
-    payload: { showPlaylistModal: true },
+    payload: { showPlaylistModal: true, video },
   });
 };
 

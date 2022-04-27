@@ -33,7 +33,6 @@ const SinglePlaylist = () => {
     });
   };
   useEffect(getSinglePlaylist, [playlistState]);
-  useEffect(() => console.log(playlistState), [playlistState]);
   return (
     <>
       <div className="display_flex">

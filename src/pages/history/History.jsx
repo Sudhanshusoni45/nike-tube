@@ -13,7 +13,6 @@ const History = () => {
     [historyState]
   );
 
-  useEffect(() => console.log("historyState", historyState));
   return (
     <>
       <div className="display_flex">

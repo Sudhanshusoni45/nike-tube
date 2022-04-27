@@ -14,3 +14,5 @@ export { addToPlaylistHandler } from "./playlist/addToPlaylistHandler";
 export { addVideoToPlaylistHandler } from "./playlist/addVideoToPlaylistHandler";
 export { getSinglePlaylistHandler } from "./playlist/getSinglePlaylistHandler";
 export { deleteVideoFromPlaylistHandler } from "./playlist/deleteVideoFromPlaylistHandler";
+export { getHistoryHandler } from "./history/getHistoryHandler";
+export { addVideoToHistoryHandler } from "./history/addVideoToHistoryHandler";

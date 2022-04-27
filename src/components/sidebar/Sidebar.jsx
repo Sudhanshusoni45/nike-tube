@@ -35,8 +35,10 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <i className="sidebar_icon fas fa-history"></i>
-          <span>History</span>
+          <Link to={"/history"}>
+            <i className="sidebar_icon fas fa-history"></i>
+            <span>History</span>
+          </Link>
         </li>
         <li>
           <i className="sidebar_icon fas fa-cog"></i>

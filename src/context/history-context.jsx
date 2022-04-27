@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { historyReducer } from "../reducer";
 const HistoryContext = createContext();
 const initialState = [];
 
@@ -14,4 +15,6 @@ const HistoryProvider = ({ children }) => {
   );
 };
 
-export { HistoryProvider };
+const useHistory = () => useContext(HistoryContext);
+
+export { HistoryProvider, useHistory };

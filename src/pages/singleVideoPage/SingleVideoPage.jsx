@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import {
   addToLikeVideoHandler,
   addToWatchlaterHandler,
+  addVideoToHistoryHandler,
   getSingleVideoHandler,
   removeFromLikeHandler,
   removeFromWatchlaterHandler,
 } from "../../utils";
-import { useAuth, useLiked, useWatchlater } from "../../context";
+import { useAuth, useHistory, useLiked, useWatchlater } from "../../context";
 import "./singleVideoPage.css";
 import { Sidebar } from "../../components";
 const SingleVideoPage = () => {
@@ -18,6 +19,7 @@ const SingleVideoPage = () => {
     authState: { token },
   } = useAuth();
   const { watchlaterState, watchlaterDispatch } = useWatchlater();
+  const { historyDispatch } = useHistory();
   const { youtubeId } = video;
   const { _id } = useParams();
   const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
@@ -44,6 +46,10 @@ const SingleVideoPage = () => {
     }
   };
 
+  const onVideoStartHandler = () => {
+    addVideoToHistoryHandler({ token, video, historyDispatch });
+  };
+
   useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);
   return (
     <>
@@ -53,6 +59,7 @@ const SingleVideoPage = () => {
           <ReactPlayer
             url={`https://www.youtube.com/embed/${youtubeId}`}
             controls={true}
+            onStart={onVideoStartHandler}
           />
           <div className="action_btns">
             <i

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MobileDrawer, Navbar, RequiresAuth } from "./components";
 import {
+  History,
   Liked,
   Login,
   Playlist,
@@ -48,6 +49,14 @@ function App() {
         <Route
           path="/singleplaylist/:playlistId"
           element={<SinglePlaylist />}
+        />
+        <Route
+          path="/history"
+          element={
+            <RequiresAuth>
+              <History />
+            </RequiresAuth>
+          }
         />
       </Routes>
       <MobileDrawer />

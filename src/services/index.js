@@ -20,3 +20,4 @@ export { getSinglePlaylistService } from "./playlist/getSinglePlaylist.service";
 export { deleteVideoFromPlaylistService } from "./playlist/deleteVideoFromPlaylist.service";
 // history
 export { getHistoryService } from "./history/getHistory.service";
+export { addVideoToHistoryService } from "./history/addVideoToHistory.service";

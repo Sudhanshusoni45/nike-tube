@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context";
 import "./navbar.css";
 
 const Navbar = () => {
+  const {
+    authState: { token },
+  } = useAuth();
   return (
     <header className="navigation">
       <div>
@@ -11,7 +15,11 @@ const Navbar = () => {
         <ul>
           <li>
             <Link to={"/login"}>
-              <button className="btn">Login</button>
+              {token !== null ? (
+                <button className="btn">Logout</button>
+              ) : (
+                <button className="btn">Login</button>
+              )}
             </Link>
           </li>
         </ul>

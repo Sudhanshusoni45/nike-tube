@@ -4,6 +4,10 @@ const historyReducer = (state, { type, payload: { history } }) => {
       return [...history];
     case "ADD_VIDEO_TO_HISTORY":
       return [...history];
+    case "DELETE_ALL_HISTORY":
+      return [...history];
+    case "DELETE_VIDEO_FROM_HISTORY":
+      return [...history];
   }
 };
 

@@ -19,7 +19,7 @@ const SingleVideoPage = () => {
     authState: { token },
   } = useAuth();
   const { watchlaterState, watchlaterDispatch } = useWatchlater();
-  const { historyDispatch } = useHistory();
+  const { historyState, historyDispatch } = useHistory();
   const { youtubeId } = video;
   const { _id } = useParams();
   const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
@@ -45,9 +45,14 @@ const SingleVideoPage = () => {
         : addToWatchlaterHandler({ video, watchlaterDispatch, token });
     }
   };
-
+  const checkInHistory = (_id) => {
+    const res = historyState.some((item) => item._id === _id);
+    return res;
+  };
   const onVideoStartHandler = () => {
-    addVideoToHistoryHandler({ token, video, historyDispatch });
+    checkInHistory(_id)
+      ? null
+      : addVideoToHistoryHandler({ token, video, historyDispatch });
   };
 
   useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);

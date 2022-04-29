@@ -21,3 +21,5 @@ export { deleteVideoFromPlaylistService } from "./playlist/deleteVideoFromPlayli
 // history
 export { getHistoryService } from "./history/getHistory.service";
 export { addVideoToHistoryService } from "./history/addVideoToHistory.service";
+export { deleteAllHistoryService } from "./history/deleteAllHistory.service";
+export { deleteVideoFromHistoryService } from "./history/deleteVideoFromHistory.service";

@@ -20,11 +20,7 @@ const History = () => {
   const clickHandler = () => {
     deleteAllHistoryHandler({ token, historyDispatch });
   };
-  const checkInHistory = (_id) => {
-    const res = historyState.some((item) => item._id === _id);
-    console.log("res:", res);
-    return res;
-  };
+
   const deleteVideoHandler = (_id, e) => {
     e.stopPropagation();
     deleteVideoFromHistoryHandler({ _id, token, historyDispatch });

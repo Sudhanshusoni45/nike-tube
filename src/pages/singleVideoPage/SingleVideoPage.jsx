@@ -60,23 +60,48 @@ const SingleVideoPage = () => {
     <>
       <div className="sidebar_reactPlayer_container">
         <Sidebar />
-        <div>
+        <div className="react_player_container">
           <ReactPlayer
             url={`https://www.youtube.com/embed/${youtubeId}`}
             controls={true}
             onStart={onVideoStartHandler}
+            width={"100%"}
+            height={"100%"}
           />
-          <div className="action_btns">
-            <i
-              className={`${checkIsLiked(_id) ? "fas" : "far"} fa-thumbs-up`}
-              onClick={() => likeHandler(_id)}
-            ></i>
-            <i
-              className={`${
-                checkInWatchlater(_id) ? "fas" : "far"
-              } fa-bookmark`}
-              onClick={() => watchlaterHandler(video)}
-            ></i>
+          <h2 className="video_title">{video.title}</h2>
+          <div className="video_details">
+            <span>11M views</span>
+            <div className="action_btns_container">
+              <i
+                className={`${checkIsLiked(_id) ? "fas" : "far"} fa-thumbs-up `}
+                onClick={() => likeHandler(_id)}
+              ></i>
+              <span>Like</span>
+              <i
+                className={`single_video_action_btn ${
+                  checkInWatchlater(_id) ? "fas" : "far"
+                } fa-bookmark`}
+                onClick={() => watchlaterHandler(video)}
+              ></i>
+              <span> Later</span>
+              <i className="single_video_action_btn fas fa-folder-plus"></i>
+              <span> Save</span>
+            </div>
+          </div>
+
+          <div className="video_details_bottom">
+            <li class="stacked-list-item">
+              <img
+                src="https://picsum.photos/200/300"
+                alt="random image"
+                class="avatar"
+              />
+              <div class="stacked-list-content">
+                <h3>List Heading</h3>
+                <small>10M Subscribers</small>
+              </div>
+            </li>
+            <p className="video_description">{video.description}</p>
           </div>
         </div>
       </div>

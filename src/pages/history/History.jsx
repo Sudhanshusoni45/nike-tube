@@ -49,6 +49,7 @@ const History = () => {
                   <h3>{title}</h3>
                   <span>{channelName}</span>
                 </div>
+
                 <i
                   className="fas fa-trash stacked-list-icon"
                   onClick={(e) => deleteVideoHandler(_id, e)}

@@ -7,8 +7,7 @@
     height: 48rem;
     display: flex;
     flex-direction: column;
-    /* background-color: blueviolet; */
-    padding: 1rem;
+    padding: 2rem;
 }
 .video_title{
     margin-top: var(--space-xs);
@@ -17,23 +16,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    /* background-color: red; */
     align-items: center;
+    margin-top: .4rem;
 }
 .action_btns_container {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
 }
 .single_video_action_btn{
     margin-left: var(--space-xxs);
 }
 
-.stacked-list-item{
-    /* width: fit-content; */
-}
 .video_details_bottom{
     border-top: 1px solid rgb(210, 210, 210);
-    margin-top: var(--space-xxs);
+    margin-top: var(--space-xs);
     padding: 1rem 0;
 }
 @media screen and (min-width: 1193px){

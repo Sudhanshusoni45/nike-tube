@@ -57,7 +57,7 @@ const History = () => {
               </li>
             ))
           ) : (
-            <h1>This playlist is empty...</h1>
+            <h1>Start watching some videos to get a watch history...</h1>
           )}
         </div>
       </div>

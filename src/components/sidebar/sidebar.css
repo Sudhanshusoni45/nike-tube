@@ -13,7 +13,18 @@
 .watchlater_icon{
     margin-left: .2rem;
 }
-
+.sidebar_link{
+    text-decoration: none;
+}
+.sidebar_link:visited{
+    color: var(--color-black);
+}
+.sidebar_link:hover{
+    color: blue;
+}
+.sidebar_link:active{
+    color: rgb(118, 118, 118);
+}
 @media screen and (max-width:850px){
     .sidebar{
         width: 17%;

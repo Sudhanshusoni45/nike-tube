@@ -3,15 +3,23 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   addToLikeVideoHandler,
+  addToPlaylistHandler,
   addToWatchlaterHandler,
   addVideoToHistoryHandler,
   getSingleVideoHandler,
   removeFromLikeHandler,
   removeFromWatchlaterHandler,
+  showPlaylistModalHandler,
 } from "../../utils";
-import { useAuth, useHistory, useLiked, useWatchlater } from "../../context";
+import {
+  useAuth,
+  useHistory,
+  useLiked,
+  usePlaylistModal,
+  useWatchlater,
+} from "../../context";
 import "./singleVideoPage.css";
-import { Sidebar } from "../../components";
+import { PlaylistModal, Sidebar } from "../../components";
 const SingleVideoPage = () => {
   const [video, setVideo] = useState({});
   const { likedState, likedDispatch } = useLiked();
@@ -20,6 +28,10 @@ const SingleVideoPage = () => {
   } = useAuth();
   const { watchlaterState, watchlaterDispatch } = useWatchlater();
   const { historyState, historyDispatch } = useHistory();
+  const {
+    playlistModalDispatch,
+    playlistModalState: { showPlaylistModal },
+  } = usePlaylistModal();
   const { youtubeId } = video;
   const { _id } = useParams();
   const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
@@ -58,6 +70,7 @@ const SingleVideoPage = () => {
   useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);
   return (
     <>
+      {showPlaylistModal ? <PlaylistModal /> : null}
       <div className="sidebar_reactPlayer_container">
         <Sidebar />
         <div className="react_player_container">
@@ -77,26 +90,39 @@ const SingleVideoPage = () => {
                 onClick={() => likeHandler(_id)}
               ></i>
               <span> Like</span>
-              <i
-                className={`single_video_action_btn ${
-                  checkInWatchlater(_id) ? "fas" : "far"
-                } fa-bookmark`}
-                onClick={() => watchlaterHandler(video)}
-              ></i>
-              <span> Later</span>
-              <i className="single_video_action_btn fas fa-folder-plus"></i>
-              <span> Save</span>
+              <button className="transparent_btn single_video_action_btn">
+                <i
+                  className={`single_video_action_btn ${
+                    checkInWatchlater(_id) ? "fas" : "far"
+                  } fa-bookmark`}
+                  onClick={() => watchlaterHandler(video)}
+                ></i>
+                <span> Later</span>
+              </button>
+              <button
+                className="transparent_btn single_video_action_btn"
+                title="add to playlist"
+                onClick={() =>
+                  showPlaylistModalHandler({
+                    playlistModalDispatch,
+                    video,
+                  })
+                }
+              >
+                <i className="fas fa-folder-plus"></i>
+                <span> Save</span>
+              </button>
             </div>
           </div>
 
           <div className="video_details_bottom">
-            <li class="stacked-list-item">
+            <li className="stacked-list-item">
               <img
                 src="https://picsum.photos/200/300"
                 alt="random image"
-                class="avatar"
+                className="avatar"
               />
-              <div class="stacked-list-content">
+              <div className="stacked-list-content">
                 <h3>List Heading</h3>
                 <small>10M Subscribers</small>
               </div>

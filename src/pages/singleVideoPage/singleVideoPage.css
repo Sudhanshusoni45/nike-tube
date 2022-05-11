@@ -25,6 +25,7 @@
 }
 .single_video_action_btn{
     margin-left: var(--space-xxs);
+    font-size: 1.3rem;
 }
 
 .video_details_bottom{

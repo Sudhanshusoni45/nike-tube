@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth, usePlaylistModal } from "../../context";
-import { showPlaylistModalHandler } from "../../utils";
+import { useAuth, usePlaylistModal, useWatchlater } from "../../context";
+import {
+  addToWatchlaterHandler,
+  removeFromWatchlaterHandler,
+  showPlaylistModalHandler,
+} from "../../utils";
 import "./card.css";
 
 const Card = ({ _id, title, channelName, thumbNail }) => {
@@ -8,8 +12,31 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
   const {
     authState: { token },
   } = useAuth();
+  const { watchlaterDispatch, watchlaterState } = useWatchlater();
   const { playlistModalDispatch } = usePlaylistModal();
+  const checkInWatchlater = (_id) =>
+    watchlaterState.some((item) => item._id === _id);
 
+  const watchlaterIconClickHandler = (video) => {
+    if (token !== null) {
+      const { _id } = video;
+      checkInWatchlater(_id)
+        ? (() => {
+            removeFromWatchlaterHandler({
+              watchlaterDispatch,
+              token,
+              _id,
+            });
+            alert("Removed From watchlater");
+          })()
+        : (() => {
+            addToWatchlaterHandler({ token, watchlaterDispatch, video });
+            alert("Added to watchlater");
+          })();
+    } else {
+      alert("Login to add to watchlater");
+    }
+  };
   const playlistIconClickHandler = (video) => {
     if (token !== null) {
       showPlaylistModalHandler({ playlistModalDispatch, video });
@@ -28,9 +55,21 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
           <button
             title="watchlater"
             className="transparent_btn card_action_btn"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              watchlaterIconClickHandler({
+                _id,
+                title,
+                channelName,
+                thumbNail,
+              });
+              e.stopPropagation();
+            }}
           >
-            <i className="far fa-bookmark action_icon"></i>
+            <i
+              className={`${
+                checkInWatchlater(_id) ? "fas" : "far"
+              } fa-bookmark action_icon`}
+            ></i>
           </button>
 
           <button

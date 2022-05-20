@@ -20,11 +20,7 @@ const History = () => {
   const clickHandler = () => {
     deleteAllHistoryHandler({ token, historyDispatch });
   };
-  const checkInHistory = (_id) => {
-    const res = historyState.some((item) => item._id === _id);
-    console.log("res:", res);
-    return res;
-  };
+
   const deleteVideoHandler = (_id, e) => {
     e.stopPropagation();
     deleteVideoFromHistoryHandler({ _id, token, historyDispatch });
@@ -53,6 +49,7 @@ const History = () => {
                   <h3>{title}</h3>
                   <span>{channelName}</span>
                 </div>
+
                 <i
                   className="fas fa-trash stacked-list-icon"
                   onClick={(e) => deleteVideoHandler(_id, e)}
@@ -60,7 +57,7 @@ const History = () => {
               </li>
             ))
           ) : (
-            <h1>This playlist is empty...</h1>
+            <h1>Start watching some videos to get a watch history...</h1>
           )}
         </div>
       </div>

@@ -37,31 +37,33 @@ const SinglePlaylist = () => {
     <>
       <div className="display_flex">
         <Sidebar />
-        {playlist.videos.length !== 0 ? (
-          playlist.videos.map(({ title, _id, thumbNail, channelName }) => (
-            <li
-              key={_id}
-              onClick={() => clickHandler(_id)}
-              className="list_reset stacked-list-item playlist_video"
-            >
-              <img
-                src={thumbNail}
-                alt={title}
-                className="playlist_video_thumbnail"
-              />
-              <div className="stacked-list-content">
-                <h3>{title}</h3>
-                <span>{channelName}</span>
-              </div>
-              <i
-                className="fas fa-trash stacked-list-icon"
-                onClick={(e) => deleteVideoHandler(_id, e)}
-              ></i>
-            </li>
-          ))
-        ) : (
-          <h1>This playlist is empty...</h1>
-        )}
+        <div>
+          {playlist.videos.length !== 0 ? (
+            playlist.videos.map(({ title, _id, thumbNail, channelName }) => (
+              <li
+                key={_id}
+                onClick={() => clickHandler(_id)}
+                className="list_reset stacked-list-item playlist_video"
+              >
+                <img
+                  src={thumbNail}
+                  alt={title}
+                  className="playlist_video_thumbnail"
+                />
+                <div className="stacked-list-content">
+                  <h3>{title}</h3>
+                  <span>{channelName}</span>
+                </div>
+                <i
+                  className="fas fa-trash stacked-list-icon"
+                  onClick={(e) => deleteVideoHandler(_id, e)}
+                ></i>
+              </li>
+            ))
+          ) : (
+            <h1>This playlist is empty...</h1>
+          )}
+        </div>
       </div>
     </>
   );

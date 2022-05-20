@@ -24,7 +24,7 @@ const Playlist = () => {
           {playlistState.length !== 0 ? (
             playlistState.map(({ title, _id: playlistId }) => (
               <li
-                className="list_reset playlist_tile_list"
+                className="list_reset playlist_tile_list stacked-list-item"
                 key={playlistId}
                 onClick={() => clickHandler(playlistId)}
               >

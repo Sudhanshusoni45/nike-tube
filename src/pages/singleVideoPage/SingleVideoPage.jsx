@@ -3,15 +3,23 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   addToLikeVideoHandler,
+  addToPlaylistHandler,
   addToWatchlaterHandler,
   addVideoToHistoryHandler,
   getSingleVideoHandler,
   removeFromLikeHandler,
   removeFromWatchlaterHandler,
+  showPlaylistModalHandler,
 } from "../../utils";
-import { useAuth, useHistory, useLiked, useWatchlater } from "../../context";
+import {
+  useAuth,
+  useHistory,
+  useLiked,
+  usePlaylistModal,
+  useWatchlater,
+} from "../../context";
 import "./singleVideoPage.css";
-import { Sidebar } from "../../components";
+import { PlaylistModal, Sidebar } from "../../components";
 const SingleVideoPage = () => {
   const [video, setVideo] = useState({});
   const { likedState, likedDispatch } = useLiked();
@@ -20,6 +28,10 @@ const SingleVideoPage = () => {
   } = useAuth();
   const { watchlaterState, watchlaterDispatch } = useWatchlater();
   const { historyState, historyDispatch } = useHistory();
+  const {
+    playlistModalDispatch,
+    playlistModalState: { showPlaylistModal },
+  } = usePlaylistModal();
   const { youtubeId } = video;
   const { _id } = useParams();
   const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
@@ -58,25 +70,64 @@ const SingleVideoPage = () => {
   useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);
   return (
     <>
+      {showPlaylistModal ? <PlaylistModal /> : null}
       <div className="sidebar_reactPlayer_container">
         <Sidebar />
-        <div>
+        <div className="react_player_container">
           <ReactPlayer
             url={`https://www.youtube.com/embed/${youtubeId}`}
             controls={true}
             onStart={onVideoStartHandler}
+            width={"100%"}
+            height={"100%"}
           />
-          <div className="action_btns">
-            <i
-              className={`${checkIsLiked(_id) ? "fas" : "far"} fa-thumbs-up`}
-              onClick={() => likeHandler(_id)}
-            ></i>
-            <i
-              className={`${
-                checkInWatchlater(_id) ? "fas" : "far"
-              } fa-bookmark`}
-              onClick={() => watchlaterHandler(video)}
-            ></i>
+          <h2 className="video_title">{video.title}</h2>
+          <div className="video_details">
+            <span>11M views</span>
+            <div className="action_btns_container">
+              <i
+                className={`${checkIsLiked(_id) ? "fas" : "far"} fa-thumbs-up `}
+                onClick={() => likeHandler(_id)}
+              ></i>
+              <span> Like</span>
+              <button className="transparent_btn single_video_action_btn">
+                <i
+                  className={`single_video_action_btn ${
+                    checkInWatchlater(_id) ? "fas" : "far"
+                  } fa-bookmark`}
+                  onClick={() => watchlaterHandler(video)}
+                ></i>
+                <span> Later</span>
+              </button>
+              <button
+                className="transparent_btn single_video_action_btn"
+                title="add to playlist"
+                onClick={() =>
+                  showPlaylistModalHandler({
+                    playlistModalDispatch,
+                    video,
+                  })
+                }
+              >
+                <i className="fas fa-folder-plus"></i>
+                <span> Save</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="video_details_bottom">
+            <li className="stacked-list-item">
+              <img
+                src="https://picsum.photos/200/300"
+                alt="random image"
+                className="avatar"
+              />
+              <div className="stacked-list-content">
+                <h3>List Heading</h3>
+                <small>10M Subscribers</small>
+              </div>
+            </li>
+            <p className="video_description">{video.description}</p>
           </div>
         </div>
       </div>

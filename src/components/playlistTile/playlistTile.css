@@ -1,0 +1,8 @@
+.playlistTile{
+    box-shadow: var(--medium-box-shadow);
+    width: 20rem;
+    height: 5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}

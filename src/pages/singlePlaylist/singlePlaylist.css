@@ -1,0 +1,14 @@
+@import url('https://maya-ui-temp.netlify.app/Pages/list/list.css');
+.playlist_video_thumbnail{
+    width: 13rem;
+    height: 8rem;
+    border-radius: .7rem;
+    object-fit:fill;
+}
+.playlist_video{
+    cursor: pointer;
+    margin:  var(--space-sm);
+}
+.stacked-list-icon{
+    font-size: 1.5rem;
+}

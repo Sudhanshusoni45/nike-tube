@@ -9,6 +9,8 @@
     box-shadow: var(--medium-box-shadow);
     width: 100%;
     border-radius: 1rem;
+    position: relative;
+
 }
 .videoCard_body{
     display: flex;
@@ -23,8 +25,24 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* opacity: 0.1; */
-    /* display: none; */
     border-radius: 1rem;
-
+}
+.card_action_btns_container{
+    position: absolute;
+    right: .5rem;
+    bottom: .5rem;
+    display: inline-block;
+}
+.card_action_btn{
+    background: rgba(0,0,0,.5);
+    padding: .3rem;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: var(--space-xxxs);
+}
+.action_icon{
+    color: rgb(218, 218, 218);
+    font-size: 1.5rem;
+    cursor: pointer;
 }

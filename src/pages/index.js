@@ -5,3 +5,5 @@ export { Watchlater } from "./watchlater/Watchlater";
 export { History } from "./history/History";
 export { Liked } from "./liked/Liked";
 export { SingleVideoPage } from "./singleVideoPage/SingleVideoPage";
+export { Playlist } from "./playlist/playlist";
+export { SinglePlaylist } from "./singlePlaylist/SinglePlaylist";

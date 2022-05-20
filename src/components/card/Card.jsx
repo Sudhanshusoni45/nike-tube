@@ -1,8 +1,22 @@
 import { useNavigate } from "react-router-dom";
+import { useAuth, usePlaylistModal } from "../../context";
+import { showPlaylistModalHandler } from "../../utils";
 import "./card.css";
 
 const Card = ({ _id, title, channelName, thumbNail }) => {
   const navigate = useNavigate();
+  const {
+    authState: { token },
+  } = useAuth();
+  const { playlistModalDispatch } = usePlaylistModal();
+
+  const playlistIconClickHandler = (video) => {
+    if (token !== null) {
+      showPlaylistModalHandler({ playlistModalDispatch, video });
+    } else {
+      alert("Login to add to playlist");
+    }
+  };
   return (
     <div
       className="videoCard_container"
@@ -10,6 +24,26 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
     >
       <div className="videoCard">
         <img src={thumbNail} alt="" className="videoCard_thumbnail" />
+        <div className="card_action_btns_container ">
+          <button
+            title="watchlater"
+            className="transparent_btn card_action_btn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <i className="far fa-bookmark action_icon"></i>
+          </button>
+
+          <button
+            title="playlist"
+            className="transparent_btn card_action_btn"
+            onClick={(e) => {
+              playlistIconClickHandler({ _id, title, channelName, thumbNail });
+              e.stopPropagation();
+            }}
+          >
+            <i className="fas fa-folder-plus action_icon"></i>
+          </button>
+        </div>
       </div>
       <div className="videoCard_body">
         <img

@@ -12,3 +12,6 @@ export { usePlaylist } from "./playlist-context";
 
 export { PlaylistModalProvider } from "./playlistModal-context";
 export { usePlaylistModal } from "./playlistModal-context";
+
+export { HistoryProvider } from "./history-context";
+export { useHistory } from "./history-context";

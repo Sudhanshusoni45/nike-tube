@@ -2,9 +2,12 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MobileDrawer, Navbar, RequiresAuth } from "./components";
 import {
+  History,
   Liked,
   Login,
+  Playlist,
   Signup,
+  SinglePlaylist,
   SingleVideoPage,
   VideoListing,
   Watchlater,
@@ -34,7 +37,27 @@ function App() {
             </RequiresAuth>
           }
         />
+        <Route
+          path="/playlist"
+          element={
+            <RequiresAuth>
+              <Playlist />
+            </RequiresAuth>
+          }
+        />
         <Route path="/singlevideopage/:_id" element={<SingleVideoPage />} />
+        <Route
+          path="/singleplaylist/:playlistId"
+          element={<SinglePlaylist />}
+        />
+        <Route
+          path="/history"
+          element={
+            <RequiresAuth>
+              <History />
+            </RequiresAuth>
+          }
+        />
       </Routes>
       <MobileDrawer />
     </div>

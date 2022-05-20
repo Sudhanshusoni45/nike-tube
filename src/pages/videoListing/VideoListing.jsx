@@ -1,28 +1,18 @@
 import { useEffect, useState } from "react";
-import { Card, Sidebar } from "../../components";
-import { useAuth, useLiked } from "../../context";
+import { Card, PlaylistModal, Sidebar } from "../../components";
+import { useAuth, useLiked, usePlaylistModal } from "../../context";
 import { addToLikeVideoHandler, getVideosHandler } from "../../utils";
 import "./videoListing.css";
 const VideoListing = () => {
   const [exploreVideos, setExploreVideos] = useState([]);
-
-  useEffect(() => getVideosHandler(setExploreVideos), []);
   const {
-    authState: { token },
-  } = useAuth();
-
-  const { likedDispatch } = useLiked();
-
-  const video = {
-    _id: 21,
-    title: "test video",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    creator: "Nike",
-  };
+    playlistModalState: { showPlaylistModal },
+  } = usePlaylistModal();
+  useEffect(() => getVideosHandler(setExploreVideos), []);
 
   return (
     <>
+      {showPlaylistModal ? <PlaylistModal /> : null}
       <div className="sidebar_videogrid_container">
         <Sidebar />
         <div className="videoCard_grid">

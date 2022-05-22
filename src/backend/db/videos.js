@@ -21,8 +21,8 @@ export const videos = [
       "Give golf a go like World Champion sprinter Dina Asher-Smith. Or take a swing at tennis like WNBA star Sabrina Ionescu. Step up to the plate with eight-time Paralympic international medalist Blake Leeper or take aim at archery like award-winning artist Rosalía. Whatever it is you want to do, go for it Sure, it might not be pretty. 😬 But, trying something you’ve never done before is how you Play New. And that’s always a win. 🙌",
     channelName: "Nike",
     thumbNail:
-      "https://i.ytimg.com/vi/BUvEEVq4woU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBzNjh-jWwCZKYnU2idc7hSuGW3Pg",
-    youtubeId: "BUvEEVq4woU",
+      "https://i.ytimg.com/vi/8UVyhF1zkxI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBzNjh-jWwCZKYnU2idc7hSuGW3Pg",
+    youtubeId: "8UVyhF1zkxI",
   },
   {
     _id: "F_Riqjdh2oM",

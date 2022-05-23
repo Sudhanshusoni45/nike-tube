@@ -16,7 +16,7 @@ import {
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<VideoListing />} />
         <Route path="/login" element={<Login />} />

@@ -16,11 +16,21 @@ const Liked = () => {
       <div className="sidebar_likedVideos_container">
         <Sidebar />
         <div>
-          {likedState.map((item) => (
-            <>
-              <h1>{item.title}</h1>
-              <img src={item.thumbNail} alt="" />
-            </>
+          {likedState.map(({ title, thumbNail, _id, channelName }) => (
+            <li
+              className="list_reset stacked-list-item likedVideos_list "
+              key={_id}
+            >
+              <img
+                src={thumbNail}
+                alt={title}
+                className="list_video_thumbnail"
+              />
+              <div>
+                <h3>{title}</h3>
+                <span>{channelName}</span>
+              </div>
+            </li>
           ))}
         </div>
       </div>

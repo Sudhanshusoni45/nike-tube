@@ -1,3 +1,6 @@
-.sidebar_likedVideos_container{
-    display: flex;
+.sidebar_likedVideos_container {
+  display: flex;
+}
+.likedVideos_list {
+  margin-top: var(--space-md);
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Sidebar } from "../../components";
+import { Navbar, Sidebar } from "../../components";
 import { useAuth, useHistory } from "../../context";
 import {
   deleteAllHistoryHandler,
@@ -27,6 +27,7 @@ const History = () => {
   };
   return (
     <>
+      <Navbar />
       <div className="display_flex">
         <Sidebar />
         <div className="history_list">

@@ -1,8 +1,8 @@
-const searchFilter = ({ exploreVideos, searchQuery }) => {
+const searchFilter = ({ categoryFilteredVideos, searchQuery }) => {
   if (searchQuery === "") {
-    return exploreVideos;
+    return categoryFilteredVideos;
   } else {
-    return exploreVideos.filter((video) => {
+    return categoryFilteredVideos.filter((video) => {
       return video.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
   }

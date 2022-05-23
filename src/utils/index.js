@@ -27,3 +27,4 @@ export { deleteAllHistoryHandler } from "./history/deleteAllHistoryHandler";
 export { deleteVideoFromHistoryHandler } from "./history/deleteVideoFromHistoryHandler";
 // filter
 export { searchFilter } from "./filterVideos/searchFilter";
+export { categoryFilter } from "./filterVideos/categoryFilter";

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Sidebar } from "../../components";
+import { Navbar, Sidebar } from "../../components";
 import { useLiked } from "../../context";
 import { useAuth } from "../../context/auth-context";
 import { getLikedVideoHandler } from "../../utils/likedVideo/getLikedVideoHandler";
@@ -12,6 +12,7 @@ const Liked = () => {
   useEffect(() => getLikedVideoHandler({ token, likedDispatch }), []);
   return (
     <>
+      <Navbar />
       <div className="sidebar_likedVideos_container">
         <Sidebar />
         <div>

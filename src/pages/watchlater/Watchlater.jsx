@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Sidebar } from "../../components";
+import { Navbar, Sidebar } from "../../components";
 import { useAuth, useWatchlater } from "../../context";
 import { getWatchlaterVideoHandler } from "../../utils";
 const Watchlater = () => {
@@ -11,6 +11,7 @@ const Watchlater = () => {
 
   return (
     <>
+      <Navbar />
       <Sidebar />
       {watchlaterState.length !== 0 ? (
         watchlaterState.map((item) => (

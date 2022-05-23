@@ -19,7 +19,7 @@ import {
   useWatchlater,
 } from "../../context";
 import "./singleVideoPage.css";
-import { PlaylistModal, Sidebar } from "../../components";
+import { Navbar, PlaylistModal, Sidebar } from "../../components";
 const SingleVideoPage = () => {
   const [video, setVideo] = useState({});
   const { likedState, likedDispatch } = useLiked();
@@ -70,6 +70,7 @@ const SingleVideoPage = () => {
   useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);
   return (
     <>
+      <Navbar />
       {showPlaylistModal ? <PlaylistModal /> : null}
       <div className="sidebar_reactPlayer_container">
         <Sidebar />

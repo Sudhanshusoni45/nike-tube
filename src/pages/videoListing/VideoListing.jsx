@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, Navbar, PlaylistModal, Sidebar } from "../../components";
-import { useAuth, useLiked, usePlaylistModal } from "../../context";
-import {
-  addToLikeVideoHandler,
-  categoryFilter,
-  getVideosHandler,
-  searchFilter,
-} from "../../utils";
+import { usePlaylistModal } from "../../context";
+import { categoryFilter, getVideosHandler, searchFilter } from "../../utils";
 import "./videoListing.css";
 const VideoListing = () => {
   const [exploreVideos, setExploreVideos] = useState([]);

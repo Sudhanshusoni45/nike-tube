@@ -35,6 +35,7 @@ const VideoListing = () => {
           name="videoCategory"
           id="videoCategory"
           onChange={categoryHandler}
+          className="category_filter"
         >
           <option value="">view all</option>
           <option value="jordan">jordan</option>

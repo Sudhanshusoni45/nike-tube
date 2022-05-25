@@ -22,3 +22,6 @@
   border-radius: 0.7rem;
   object-fit: fill;
 }
+.medium_top_margin {
+  margin-top: var(--space-md);
+}

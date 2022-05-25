@@ -10,10 +10,21 @@
   margin-top: var(--space-sm);
 }
 .category_container {
-  /* background-color: red; */
   display: flex;
   justify-content: flex-end;
   margin: var(--space-xs) var(--space-xxl) 0 0;
+}
+.category_filter {
+  border-radius: 1rem;
+  padding: 0.1rem 0.2rem;
+  border: 1px solid rgb(194, 193, 193);
+  cursor: pointer;
+}
+.category_filter:focus {
+  border-radius: 1rem;
+}
+.category_filter:focus-visible {
+  outline: 1px solid rgb(194, 193, 193);
 }
 
 @media screen and (max-width: 1193px) {
@@ -21,13 +32,11 @@
     font-size: 85%;
   }
 }
-
 @media screen and (max-width: 1014px) {
   :root {
     font-size: 70%;
   }
 }
-
 @media screen and (min-width: 750px) {
   .videoCard_grid {
     grid-template-columns: repeat(auto-fill, 350px);

@@ -3,6 +3,7 @@
   box-shadow: var(--medium-box-shadow);
   color: var(--font-color);
   align-items: center;
+  position: sticky;
 }
 .navigation .search_bar {
   padding: 0.4rem 1rem;

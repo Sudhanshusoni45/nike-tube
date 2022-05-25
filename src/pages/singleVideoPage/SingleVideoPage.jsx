@@ -86,17 +86,26 @@ const SingleVideoPage = () => {
           <div className="video_details">
             <span>11M views</span>
             <div className="action_btns_container">
-              <i
-                className={`${checkIsLiked(_id) ? "fas" : "far"} fa-thumbs-up `}
+              <button
+                className="transparent_btn single_video_action_btn"
                 onClick={() => likeHandler(_id)}
-              ></i>
-              <span> Like</span>
-              <button className="transparent_btn single_video_action_btn">
+              >
+                <i
+                  className={`${
+                    checkIsLiked(_id) ? "fas" : "far"
+                  } fa-thumbs-up `}
+                  onClick={() => likeHandler(_id)}
+                ></i>
+                <span> Like</span>
+              </button>
+              <button
+                className="transparent_btn single_video_action_btn"
+                onClick={() => watchlaterHandler(video)}
+              >
                 <i
                   className={`single_video_action_btn ${
                     checkInWatchlater(_id) ? "fas" : "far"
                   } fa-bookmark`}
-                  onClick={() => watchlaterHandler(video)}
                 ></i>
                 <span> Later</span>
               </button>

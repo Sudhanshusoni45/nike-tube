@@ -15,23 +15,30 @@ const Liked = () => {
       <Navbar />
       <div className="sidebar_likedVideos_container">
         <Sidebar />
-        <div>
-          {likedState.map(({ title, thumbNail, _id, channelName }) => (
-            <li
-              className="list_reset stacked-list-item likedVideos_list "
-              key={_id}
-            >
-              <img
-                src={thumbNail}
-                alt={title}
-                className="list_video_thumbnail"
-              />
-              <div>
-                <h3>{title}</h3>
-                <span>{channelName}</span>
-              </div>
-            </li>
-          ))}
+        <div className="">
+          {likedState.length ? (
+            likedState.map(({ title, thumbNail, _id, channelName }) => (
+              <li
+                className="list_reset stacked-list-item likedVideos_list "
+                key={_id}
+              >
+                <img
+                  src={thumbNail}
+                  alt={title}
+                  className="list_video_thumbnail"
+                />
+                <div>
+                  <h3>{title}</h3>
+                  <span>{channelName}</span>
+                </div>
+              </li>
+            ))
+          ) : (
+            <div className="medium_top_margin">
+              <h1>You have not liked any video yet...</h1>
+              <h1>Go like some videos already...</h1>
+            </div>
+          )}
         </div>
       </div>
     </>

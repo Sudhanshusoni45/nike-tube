@@ -27,18 +27,18 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
       <nav>
         <ul>
           <li>
-            <Link to={"/login"}>
-              {token !== null ? (
-                <Link to={"/logout"}>
-                  <button className="transparent_btn username_btn">
-                    <i className="fas fa-user"></i>
-                    <span className="nav_username"> {firstName}</span>
-                  </button>
-                </Link>
-              ) : (
+            {token !== null ? (
+              <Link to={"/logout"}>
+                <button className="transparent_btn username_btn">
+                  <i className="fas fa-user"></i>
+                  <span className="nav_username"> {firstName}</span>
+                </button>
+              </Link>
+            ) : (
+              <Link to={"/login"}>
                 <button className="btn">Login</button>
-              )}
-            </Link>
+              </Link>
+            )}
           </li>
         </ul>
       </nav>

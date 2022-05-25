@@ -28,12 +28,10 @@ const History = () => {
   return (
     <>
       <Navbar />
+
       <div className="display_flex">
         <Sidebar />
-        <div className="history_list">
-          <button className="btn" onClick={clickHandler}>
-            Clear History
-          </button>
+        <div className="history_list ">
           {historyState.length !== 0 ? (
             historyState.map(({ title, _id, thumbNail, channelName }) => (
               <li
@@ -58,9 +56,19 @@ const History = () => {
               </li>
             ))
           ) : (
-            <h1>Start watching some videos to get a watch history...</h1>
+            <h1 className="medium_top_margin">
+              Start watching some videos to get a watch history...
+            </h1>
           )}
         </div>
+        {historyState.length ? (
+          <button
+            className="btn clear_history_btn medium_top_margin"
+            onClick={clickHandler}
+          >
+            Clear History
+          </button>
+        ) : null}
       </div>
     </>
   );

@@ -1,6 +1,10 @@
 .fa-trash.stacked-list-icon {
   margin-left: auto;
 }
+.clear_history_btn {
+  margin-left: auto;
+  margin-right: auto;
+}
 @media screen and (max-width: 1014px) {
   .list_reset.stacked-list-item {
     width: 90%;

@@ -1,7 +1,9 @@
+import { usePlaylist } from "../../context";
 import { deletePlaylistHandler } from "../../utils";
 import "./playlistTile.css";
 
-const PlaylistTile = ({ title }) => {
+const PlaylistTile = ({ title, playlistId, token }) => {
+  const { playlistDispatch } = usePlaylist();
   return (
     <>
       <div className="playlistTile">
@@ -13,8 +15,8 @@ const PlaylistTile = ({ title }) => {
         <button
           className="transparent_btn playlist_delete_btn"
           onClick={(e) => {
-            deletePlaylistHandler();
             e.stopPropagation();
+            deletePlaylistHandler({ playlistId, token, playlistDispatch });
           }}
         >
           <i className="fas fa-trash"></i>

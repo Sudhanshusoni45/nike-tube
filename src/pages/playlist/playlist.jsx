@@ -29,7 +29,11 @@ const Playlist = () => {
                 key={playlistId}
                 onClick={() => clickHandler(playlistId)}
               >
-                <PlaylistTile title={title} />
+                <PlaylistTile
+                  title={title}
+                  playlistId={playlistId}
+                  token={token}
+                />
               </li>
             ))
           ) : (

@@ -1,5 +1,27 @@
-.navigation{
-    background-color: var(--hover-grey);
-    box-shadow: var(--medium-box-shadow);
-    color: var(--font-color);
+.navigation {
+  background-color: var(--hover-grey);
+  box-shadow: var(--medium-box-shadow);
+  color: var(--font-color);
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+.navigation .search_bar {
+  padding: 0.4rem 1rem;
+}
+.search_bar {
+  padding: 0 var(--space-sm);
+  border-radius: 1rem;
+  border: 1px solid rgb(194, 193, 193);
+  width: 18rem;
+}
+.search_bar:focus-visible {
+  outline: 1px solid rgb(194, 193, 193) !important;
+}
+.username_btn {
+  font-size: 1rem;
+}
+.nav_username {
+  margin-left: 0.3rem;
 }

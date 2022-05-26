@@ -116,7 +116,7 @@ const PlaylistModal = () => {
                   onClick={newPlaylistInputHandler}
                 >
                   <i className="fas fa-plus"></i>
-                  Create a new playlist
+                  <span> Create a new playlist</span>
                 </button>
               </div>
             ) : null}

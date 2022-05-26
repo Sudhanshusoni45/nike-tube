@@ -1,9 +1,12 @@
-/* @import url('https://maya-ui-temp.netlify.app/Pages/list/list.css'); */
-.fa-trash.stacked-list-icon{
-    margin-left: auto;
+.fa-trash.stacked-list-icon {
+  margin-left: auto;
 }
-@media screen and (max-width: 1014px){
-.list_reset.stacked-list-item{
-        width: 90%;
-    }
+.clear_history_btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (max-width: 1014px) {
+  .list_reset.stacked-list-item {
+    width: 90%;
+  }
 }

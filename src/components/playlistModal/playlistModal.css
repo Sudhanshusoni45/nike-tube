@@ -33,3 +33,6 @@
 .modal_footer .newPlaylistName_input {
   width: 12rem;
 }
+.modal .newPlaylistName_input {
+  padding: 0.3rem var(--space-xxxs);
+}

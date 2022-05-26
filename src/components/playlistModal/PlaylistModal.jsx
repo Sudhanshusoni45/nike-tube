@@ -81,7 +81,9 @@ const PlaylistModal = () => {
                       checked={checkVideoInPlaylist(playlistId)}
                       onChange={() => checkboxHandler(playlistId)}
                     />
-                    <label htmlFor={title}>{title}</label>
+                    <label className="small_left_margin" htmlFor={title}>
+                      {title}
+                    </label>
                   </li>
                 ))
               ) : (

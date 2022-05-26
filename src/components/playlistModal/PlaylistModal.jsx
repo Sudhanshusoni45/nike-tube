@@ -34,6 +34,7 @@ const PlaylistModal = () => {
       payload: { showNewPlaylistInput: false },
     });
     addToPlaylistHandler({ token, playlistDispatch, newPlaylistTitle });
+    setNewPlaylistTitle((prevTitle) => "");
   };
   const closeBtnHandler = () => {
     hidePlaylistModalHandler(playlistModalDispatch);

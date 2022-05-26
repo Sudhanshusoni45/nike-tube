@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Sidebar } from "../../components";
+import { Navbar, Sidebar } from "../../components";
 import { useAuth, usePlaylist } from "../../context";
 import "./singlePlaylist.css";
 import { deleteVideoFromPlaylistHandler } from "../../utils";
@@ -35,6 +35,7 @@ const SinglePlaylist = () => {
   useEffect(getSinglePlaylist, [playlistState]);
   return (
     <>
+      <Navbar />
       <div className="display_flex">
         <Sidebar />
         <div>

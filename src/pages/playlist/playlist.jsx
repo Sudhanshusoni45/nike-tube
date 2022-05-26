@@ -22,10 +22,10 @@ const Playlist = () => {
       <div className="playlist_sidebar_container">
         <Sidebar />
         <div className="playlist_tile_container">
-          {playlistState.length !== 0 ? (
+          {playlistState.length ? (
             playlistState.map(({ title, _id: playlistId }) => (
               <li
-                className="list_reset playlist_tile_list stacked-list-item"
+                className="list_reset playlist_tile_list"
                 key={playlistId}
                 onClick={() => clickHandler(playlistId)}
               >

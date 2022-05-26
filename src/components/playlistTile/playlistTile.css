@@ -1,8 +1,25 @@
-.playlistTile{
-    box-shadow: var(--medium-box-shadow);
-    width: 20rem;
-    height: 5rem;
-    border-radius: 1rem;
-    margin-bottom: 1.5rem;
-    cursor: pointer;
+.playlistTile {
+  box-shadow: var(--medium-box-shadow);
+  width: 90%;
+  height: 4rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm);
+  justify-content: space-between;
+}
+.playlist_youtube_icon {
+  font-size: 1.5rem;
+  margin-left: var(--space-xxs);
+}
+.playlist_delete_btn {
+  margin-top: 0.3rem;
+  font-size: 1.2rem;
+}
+@media screen and (max-width: 1014px) {
+  .playlistTile {
+    margin: 0 auto;
+  }
 }

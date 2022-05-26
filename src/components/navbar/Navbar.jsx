@@ -4,10 +4,7 @@ import "./navbar.css";
 
 const Navbar = ({ searchQuery, setSearchQuery }) => {
   const {
-    authState: {
-      token,
-      user: { firstName },
-    },
+    authState: { token, user },
   } = useAuth();
   const searchInputHandler = (e) => {
     setSearchQuery((prevQuery) => e.target.value);
@@ -31,7 +28,7 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
               <Link to={"/logout"}>
                 <button className="transparent_btn username_btn">
                   <i className="fas fa-user"></i>
-                  <span className="nav_username"> {firstName}</span>
+                  <span className="nav_username"> {user.firstName}</span>
                 </button>
               </Link>
             ) : (

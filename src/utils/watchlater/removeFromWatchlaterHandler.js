@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import {
   addToWatchlaterService,
   removeFromWatchlaterService,
@@ -13,6 +14,7 @@ const removeFromWatchlaterHandler = async ({
     if (response.status === 200) {
       const { data } = response;
       watchlaterDispatch({ type: "REMOVE_FROM_WATCHLATER", payload: data });
+      toast.info("video removed from watchlater");
     }
   } catch (error) {
     console.error(error);

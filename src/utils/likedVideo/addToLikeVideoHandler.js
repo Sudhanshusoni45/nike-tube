@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { addToLikeVideoService } from "../../services";
 
 const addToLikeVideoHandler = async ({ token, likedDispatch, video }) => {
@@ -6,6 +7,7 @@ const addToLikeVideoHandler = async ({ token, likedDispatch, video }) => {
     if (response.status === 201) {
       const { data } = response;
       likedDispatch({ type: "ADD_TO_LIKE", payload: data });
+      toast.info("video added to liked videos");
     }
   } catch (error) {
     console.error(error);

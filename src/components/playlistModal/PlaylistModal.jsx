@@ -73,7 +73,7 @@ const PlaylistModal = () => {
             <ul className="list_reset">
               {playlistState.length !== 0 ? (
                 playlistState.map(({ _id: playlistId, title }) => (
-                  <li key={playlistId}>
+                  <li key={playlistId} className="xsmall_margin_bottom">
                     <input
                       type="checkbox"
                       name={title}

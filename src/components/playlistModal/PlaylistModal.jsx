@@ -34,6 +34,7 @@ const PlaylistModal = () => {
       payload: { showNewPlaylistInput: false },
     });
     addToPlaylistHandler({ token, playlistDispatch, newPlaylistTitle });
+    setNewPlaylistTitle((prevTitle) => "");
   };
   const closeBtnHandler = () => {
     hidePlaylistModalHandler(playlistModalDispatch);
@@ -80,7 +81,9 @@ const PlaylistModal = () => {
                       checked={checkVideoInPlaylist(playlistId)}
                       onChange={() => checkboxHandler(playlistId)}
                     />
-                    <label htmlFor={title}>{title}</label>
+                    <label className="small_left_margin" htmlFor={title}>
+                      {title}
+                    </label>
                   </li>
                 ))
               ) : (

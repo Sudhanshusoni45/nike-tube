@@ -1,11 +1,9 @@
-.playlist_sidebar_container{
-    display: flex;
+.playlist_sidebar_container {
+  display: flex;
 }
-.playlist_tile_container{
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.playlist_tile_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-md);
 }
-

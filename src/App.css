@@ -25,3 +25,6 @@
 .medium_top_margin {
   margin-top: var(--space-md);
 }
+.small_left_margin {
+  margin-left: var(--space-xxs);
+}

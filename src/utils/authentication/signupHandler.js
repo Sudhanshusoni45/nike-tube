@@ -7,6 +7,7 @@ const signupHandler = async ({ authDispatch, newUser, navigate }) => {
       const { encodedToken: token, createdUser: user } = response.data;
       authDispatch({ type: "SIGNUP", payload: { token, user } });
       navigate("/");
+      toast.success("Signed up successfully");
     }
   } catch (error) {
     console.error(error);

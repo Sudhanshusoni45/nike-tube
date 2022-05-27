@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Navbar } from "../../components";
 import { useAuth } from "../../context";
 
@@ -8,6 +9,7 @@ const Logout = () => {
   const clickHandler = () => {
     authDispatch({ type: "LOGOUT", payload: { token: null, user: null } });
     Navigate("/login");
+    toast.success("Logged out successfully");
   };
   return (
     <>

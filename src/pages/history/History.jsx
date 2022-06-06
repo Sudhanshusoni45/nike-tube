@@ -29,7 +29,7 @@ const History = () => {
     <>
       <Navbar />
 
-      <div className="display_flex">
+      <div className="display_flex sidebar_historylist_container ">
         <Sidebar />
         <div className="history_list ">
           {historyState.length !== 0 ? (

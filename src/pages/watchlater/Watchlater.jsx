@@ -14,7 +14,7 @@ const Watchlater = () => {
   return (
     <>
       <Navbar />
-      <div className="display_flex">
+      <div className="display_flex sidebar_watchlater_container">
         <Sidebar />
         <div className="medium_top_margin">
           {watchlaterState.length !== 0 ? (

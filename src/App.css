@@ -28,3 +28,6 @@
 .small_left_margin {
   margin-left: var(--space-xxs);
 }
+.xsmall_margin_bottom {
+  margin-bottom: var(--space-xxxs);
+}

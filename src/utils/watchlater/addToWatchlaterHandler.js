@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { addToWatchlaterService } from "../../services";
 
 const addToWatchlaterHandler = async ({ token, watchlaterDispatch, video }) => {
@@ -10,6 +11,7 @@ const addToWatchlaterHandler = async ({ token, watchlaterDispatch, video }) => {
     if (response.status === 201) {
       const { data } = response;
       watchlaterDispatch({ type: "ADD_TO_WATCHLATER", payload: data });
+      toast.success("video added to watchlater");
     }
   } catch (error) {
     console.error(error);

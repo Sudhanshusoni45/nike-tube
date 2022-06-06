@@ -1,5 +1,5 @@
+import { toast } from "react-toastify";
 import { addVideoToPlaylistService } from "../../services";
-import { getPlaylistHandler } from "./getPlaylistHandler";
 
 const addVideoToPlaylistHandler = async ({
   token,
@@ -19,6 +19,7 @@ const addVideoToPlaylistHandler = async ({
         type: "ADD_VIDEO_TO_PLAYLIST",
         payload: data,
       });
+      toast.success("video added to playlist");
     }
   } catch (error) {
     console.error(error);

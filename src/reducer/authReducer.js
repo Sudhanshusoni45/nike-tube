@@ -8,6 +8,8 @@ const authReducer = (state, action) => {
       return { token, user };
     case "SIGNUP":
       return { token, user };
+    case "LOGOUT":
+      return { token, user };
   }
 };
 

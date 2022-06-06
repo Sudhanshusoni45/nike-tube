@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./login.css";
 import { loginHandler } from "../../utils";
 import { useAuth } from "../../context/auth-context";
+import { Navbar } from "../../components";
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -29,6 +30,7 @@ const Login = () => {
   };
   return (
     <>
+      <Navbar />
       <div className="login_component">
         <form action="" className="login_form" onSubmit={submitHandler}>
           <h1>Login</h1>

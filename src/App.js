@@ -1,10 +1,12 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
-import { MobileDrawer, Navbar, RequiresAuth } from "./components";
+import { MobileDrawer, RequiresAuth } from "./components";
 import {
   History,
   Liked,
   Login,
+  Logout,
   Playlist,
   Signup,
   SinglePlaylist,
@@ -12,12 +14,21 @@ import {
   VideoListing,
   Watchlater,
 } from "./pages";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <ToastContainer
+        theme="light"
+        position="bottom-right"
+        autoClose={2000}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover={false}
+      />
       <Routes>
+        <Route path="/logout" element={<Logout />} />
         <Route path="/" element={<VideoListing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

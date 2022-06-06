@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { addToPlaylistService } from "../../services";
 
 const addToPlaylistHandler = async ({
@@ -10,6 +11,7 @@ const addToPlaylistHandler = async ({
     if (response.status === 201) {
       const { data } = response;
       playlistDispatch({ type: "ADD_TO_PLAYLIST", payload: data });
+      toast.success("new playlist created");
     }
   } catch (error) {
     console.error(error);

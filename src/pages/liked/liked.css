@@ -1,6 +1,6 @@
 .sidebar_likedVideos_container {
   display: flex;
-  margin-top: 2.4rem;
+  margin-top: 2.6rem;
 }
 .likedVideos_list {
   margin-top: var(--space-md);

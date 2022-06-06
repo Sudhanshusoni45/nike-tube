@@ -24,8 +24,8 @@ const Login = () => {
 
   const handleTestCredentials = (e) => {
     setUser({
-      email: "adarshbalika@gmail.com",
-      password: "adarshBalika123",
+      email: "johndoe@gmail.com",
+      password: "johnDoe123",
     });
   };
   return (

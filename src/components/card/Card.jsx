@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuth, usePlaylistModal, useWatchlater } from "../../context";
 import {
   addToWatchlaterHandler,
@@ -27,14 +28,12 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
               token,
               _id,
             });
-            alert("Removed From watchlater");
           })()
         : (() => {
             addToWatchlaterHandler({ token, watchlaterDispatch, video });
-            alert("Added to watchlater");
           })();
     } else {
-      alert("Login to add to watchlater");
+      toast.warning("Login to add to watchlater");
     }
   };
   const playlistIconClickHandler = (video) => {

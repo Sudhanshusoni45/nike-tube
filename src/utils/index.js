@@ -20,8 +20,12 @@ export { addToPlaylistHandler } from "./playlist/addToPlaylistHandler";
 export { addVideoToPlaylistHandler } from "./playlist/addVideoToPlaylistHandler";
 export { getSinglePlaylistHandler } from "./playlist/getSinglePlaylistHandler";
 export { deleteVideoFromPlaylistHandler } from "./playlist/deleteVideoFromPlaylistHandler";
+export { deletePlaylistHandler } from "./playlist/deletePlaylistHandler";
 // history
 export { getHistoryHandler } from "./history/getHistoryHandler";
 export { addVideoToHistoryHandler } from "./history/addVideoToHistoryHandler";
 export { deleteAllHistoryHandler } from "./history/deleteAllHistoryHandler";
 export { deleteVideoFromHistoryHandler } from "./history/deleteVideoFromHistoryHandler";
+// filter
+export { searchFilter } from "./filterVideos/searchFilter";
+export { categoryFilter } from "./filterVideos/categoryFilter";

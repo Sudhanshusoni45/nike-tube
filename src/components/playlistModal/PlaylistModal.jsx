@@ -34,6 +34,7 @@ const PlaylistModal = () => {
       payload: { showNewPlaylistInput: false },
     });
     addToPlaylistHandler({ token, playlistDispatch, newPlaylistTitle });
+    setNewPlaylistTitle((prevTitle) => "");
   };
   const closeBtnHandler = () => {
     hidePlaylistModalHandler(playlistModalDispatch);
@@ -72,7 +73,7 @@ const PlaylistModal = () => {
             <ul className="list_reset">
               {playlistState.length !== 0 ? (
                 playlistState.map(({ _id: playlistId, title }) => (
-                  <li key={playlistId}>
+                  <li key={playlistId} className="xsmall_margin_bottom">
                     <input
                       type="checkbox"
                       name={title}
@@ -80,7 +81,9 @@ const PlaylistModal = () => {
                       checked={checkVideoInPlaylist(playlistId)}
                       onChange={() => checkboxHandler(playlistId)}
                     />
-                    <label htmlFor={title}>{title}</label>
+                    <label className="small_left_margin" htmlFor={title}>
+                      {title}
+                    </label>
                   </li>
                 ))
               ) : (
@@ -116,7 +119,7 @@ const PlaylistModal = () => {
                   onClick={newPlaylistInputHandler}
                 >
                   <i className="fas fa-plus"></i>
-                  Create a new playlist
+                  <span> Create a new playlist</span>
                 </button>
               </div>
             ) : null}

@@ -1,0 +1,10 @@
+.sidebar_watchlater_container {
+  margin-top: 2.6rem;
+  height: 84vh;
+}
+.watchlater_video_thumbnail {
+  width: 13rem;
+  height: 8rem;
+  border-radius: 0.7rem;
+  object-fit: fill;
+}

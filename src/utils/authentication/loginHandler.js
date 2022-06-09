@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useAuth } from "../../context/auth-context";
 import { loginService } from "../../services";
 
@@ -13,6 +14,7 @@ const loginHandler = async ({ user, authDispatch, navigate, location }) => {
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
       navigate(location?.state?.from?.pathname || "/", { replace: true });
+      toast.success("logged in successfully");
     }
   } catch (err) {
     console.error(err);

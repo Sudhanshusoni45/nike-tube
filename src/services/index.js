@@ -18,6 +18,7 @@ export { addToPlaylistService } from "./playlist/addToPlaylist.service";
 export { addVideoToPlaylistService } from "./playlist/addVideoToPlaylist.service";
 export { getSinglePlaylistService } from "./playlist/getSinglePlaylist.service";
 export { deleteVideoFromPlaylistService } from "./playlist/deleteVideoFromPlaylist.service";
+export { deletePlaylistService } from "./playlist/deletePlaylist.service";
 // history
 export { getHistoryService } from "./history/getHistory.service";
 export { addVideoToHistoryService } from "./history/addVideoToHistory.service";

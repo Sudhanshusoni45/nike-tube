@@ -1,18 +1,33 @@
-:root{
-    --medium-box-shadow:rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;;
+:root {
+  --medium-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
-.list_reset{
-list-style: none;
+.list_reset {
+  list-style: none;
 }
-.transparent_btn{
-    background: transparent;
-    border: 0px ;
-    cursor: pointer;
+.transparent_btn {
+  background: transparent;
+  border: 0px;
+  cursor: pointer;
 }
-.display_inline_block{
-    display: inline-block;
+.display_inline_block {
+  display: inline-block;
 }
-.display_flex{
-    display: flex;
+.display_flex {
+  display: flex;
 }
-
+.list_video_thumbnail {
+  width: 13rem;
+  height: 8rem;
+  border-radius: 0.7rem;
+  object-fit: fill;
+}
+.medium_top_margin {
+  margin-top: var(--space-md);
+}
+.small_left_margin {
+  margin-left: var(--space-xxs);
+}
+.xsmall_margin_bottom {
+  margin-bottom: var(--space-xxxs);
+}

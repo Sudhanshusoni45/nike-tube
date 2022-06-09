@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { removeFromLikeService } from "../../services";
 
 const removeFromLikeHandler = async ({ _id, token, likedDispatch }) => {
@@ -6,6 +7,7 @@ const removeFromLikeHandler = async ({ _id, token, likedDispatch }) => {
     if (response.status === 200) {
       const { data } = response;
       likedDispatch({ type: "REMOVE_FROM_LIKE", payload: data });
+      toast.info("video removed from liked videos");
     }
   } catch (error) {
     console.error(error);

@@ -5,12 +5,6 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul className="sidebar_list list_reset">
-        {/* commented on purpose */}
-        {/* <li>
-          <i className="sidebar_icon fas fa-home"></i>
-
-          <span>Home</span>
-        </li> */}
         <li>
           <Link className="sidebar_link" to={"/"}>
             <i className="sidebar_icon fas fa-compass"></i>

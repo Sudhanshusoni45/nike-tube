@@ -16,6 +16,8 @@ const playlistReducer = (
       return [...playlists];
     case "ADD_VIDEO_TO_PLAYLIST":
       return [...getUpdatedPlaylist()];
+    case "DELETE_PLAYLIST":
+      return [...playlists];
     case "DELETE_VIDEO_FROM_PLAYLIST":
       return [...getUpdatedPlaylist()];
   }

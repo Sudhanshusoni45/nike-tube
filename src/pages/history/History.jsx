@@ -25,7 +25,7 @@ const History = () => {
 
   const deleteVideoHandler = (_id, e) => {
     e.stopPropagation();
-    deleteVideoFromHistoryHandler({ _id, token, historyDispatch });
+    deleteVideoFromHistoryHandler({ _id, token, dispatch });
   };
 
   useEffect(() => getHistoryHandler({ token, dispatch }), []);

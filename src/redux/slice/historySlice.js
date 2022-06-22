@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addVideoToHistory, deleteAllHistory, getHistory } from "../thunk";
+import {
+  addVideoToHistory,
+  deleteAllHistory,
+  deleteVideoFromHistory,
+  getHistory,
+} from "../thunk";
 
 const initialState = [];
 
@@ -9,10 +14,13 @@ const historySlice = createSlice({
   reducers: {},
   extraReducers: {
     [addVideoToHistory.fulfilled]: (state, { payload: { history } }) => {
-      state.push(...history);
+      return history;
     },
-    [deleteAllHistory.fulfilled]: (state, { payload }) => {
-      return payload.history;
+    [deleteAllHistory.fulfilled]: (state, { payload: { history } }) => {
+      return history;
+    },
+    [deleteVideoFromHistory.fulfilled]: (state, { payload: { history } }) => {
+      return history;
     },
   },
 });

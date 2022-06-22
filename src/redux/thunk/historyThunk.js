@@ -55,3 +55,19 @@ export const getHistory = createAsyncThunk(
     }
   }
 );
+
+export const deleteVideoFromHistory = createAsyncThunk(
+  "history/deleteVideoFromHistory",
+  async ({ _id, token }) => {
+    try {
+      const url = `/api/user/history/${_id}`;
+      const config = {
+        headers: { authorization: token },
+      };
+      const response = await axios.delete(url, config);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);

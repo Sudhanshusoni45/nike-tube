@@ -28,7 +28,7 @@ const History = () => {
     deleteVideoFromHistoryHandler({ _id, token, historyDispatch });
   };
 
-  useEffect(() => getHistoryHandler({ token }), [historyState]);
+  useEffect(() => getHistoryHandler({ token, dispatch }), []);
 
   return (
     <>

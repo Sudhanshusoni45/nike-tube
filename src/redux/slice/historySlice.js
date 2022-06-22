@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addVideoToHistory, deleteAllHistory } from "../thunk";
+import { addVideoToHistory, deleteAllHistory, getHistory } from "../thunk";
 
 const initialState = [];
 
@@ -12,7 +12,6 @@ const historySlice = createSlice({
       state.push(...history);
     },
     [deleteAllHistory.fulfilled]: (state, { payload }) => {
-      console.log("payload:", payload);
       return payload.history;
     },
   },

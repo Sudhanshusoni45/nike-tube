@@ -31,7 +31,24 @@ export const deleteAllHistory = createAsyncThunk(
         },
       };
       const response = await axios.delete(url, config);
-      console.log("response DallHis:", response);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
+export const getHistory = createAsyncThunk(
+  "history/getHistory",
+  async (token) => {
+    try {
+      const url = "/api/user/history";
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const response = await axios.get(url, config);
       return response.data;
     } catch (error) {
       console.error(error);

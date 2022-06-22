@@ -11,13 +11,12 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const { authDispatch } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    loginHandler({ user, authDispatch, navigate, location, dispatch });
+    loginHandler({ user, navigate, location, dispatch });
   };
   const changeHandler = (e) => {
     const { name, value } = e.target;

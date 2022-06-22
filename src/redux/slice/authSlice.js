@@ -11,7 +11,12 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state, action) => {
+      state.token = null;
+      state.user = null;
+    },
+  },
   extraReducers: {
     [login.pending]: (state, action) => {
       state.status = "loading";
@@ -35,4 +40,5 @@ const authSlice = createSlice({
 });
 
 export const selectAuth = (state) => state.auth;
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -94,7 +94,6 @@ const SingleVideoPage = () => {
                   className={`${
                     checkIsLiked(_id) ? "fas" : "far"
                   } fa-thumbs-up `}
-                  onClick={() => likeHandler(_id)}
                 ></i>
                 <span> Like</span>
               </button>

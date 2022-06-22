@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Sidebar, PlaylistTile, Navbar } from "../../components";
-import { useAuth, usePlaylist } from "../../context";
+import { usePlaylist } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
 import { getPlaylistHandler } from "../../utils";
 import "./playlist.css";
 
 const Playlist = () => {
-  const {
-    authState: { token },
-  } = useAuth();
+  const { token, user } = useSelector(selectAuth);
   const { playlistState, playlistDispatch } = usePlaylist();
   useEffect(() => getPlaylistHandler({ token, playlistDispatch }), []);
   const Navigate = useNavigate();

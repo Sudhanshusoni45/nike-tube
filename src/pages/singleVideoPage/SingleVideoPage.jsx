@@ -20,12 +20,14 @@ import {
 } from "../../context";
 import "./singleVideoPage.css";
 import { Navbar, PlaylistModal, Sidebar } from "../../components";
+import { selectAuth } from "../../redux/slice/authSlice";
+import { useSelector } from "react-redux";
+
 const SingleVideoPage = () => {
   const [video, setVideo] = useState({});
   const { likedState, likedDispatch } = useLiked();
-  const {
-    authState: { token },
-  } = useAuth();
+
+  const { token } = useSelector(selectAuth);
   const { watchlaterState, watchlaterDispatch } = useWatchlater();
   const { historyState, historyDispatch } = useHistory();
   const {
@@ -45,6 +47,7 @@ const SingleVideoPage = () => {
         : addToLikeVideoHandler({ _id, token, video, likedDispatch });
     }
   };
+
   const checkInWatchlater = (_id) =>
     watchlaterState.some((item) => item._id === _id);
 
@@ -57,10 +60,12 @@ const SingleVideoPage = () => {
         : addToWatchlaterHandler({ video, watchlaterDispatch, token });
     }
   };
+
   const checkInHistory = (_id) => {
     const res = historyState.some((item) => item._id === _id);
     return res;
   };
+
   const onVideoStartHandler = () => {
     checkInHistory(_id)
       ? null

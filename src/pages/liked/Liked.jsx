@@ -1,13 +1,14 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Navbar, Sidebar } from "../../components";
 import { useLiked } from "../../context";
 import { useAuth } from "../../context/auth-context";
+import { selectAuth } from "../../redux/slice/authSlice";
 import { getLikedVideoHandler } from "../../utils/likedVideo/getLikedVideoHandler";
 import "./liked.css";
 const Liked = () => {
-  const {
-    authState: { token },
-  } = useAuth();
+  const { token } = useSelector(selectAuth);
+
   const { likedState, likedDispatch } = useLiked();
   useEffect(() => getLikedVideoHandler({ token, likedDispatch }), []);
   return (

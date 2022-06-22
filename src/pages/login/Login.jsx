@@ -4,6 +4,7 @@ import "./login.css";
 import { loginHandler } from "../../utils";
 import { useAuth } from "../../context/auth-context";
 import { Navbar } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -13,9 +14,10 @@ const Login = () => {
   const { authDispatch } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    loginHandler({ user, authDispatch, navigate, location });
+    loginHandler({ user, authDispatch, navigate, location, dispatch });
   };
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -58,12 +60,6 @@ const Login = () => {
             />
           </div>
 
-          <div>
-            <input type="checkbox" name="rememberMe" />
-            <label className="margin-left-xxs" htmlFor="rememberMe">
-              Remember me
-            </label>
-          </div>
           <Link to={"#"}>
             <small>Forgot your password</small>
           </Link>

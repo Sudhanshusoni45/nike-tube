@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Navbar, Sidebar } from "../../components";
 import { useAuth, useHistory } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
 import {
   deleteAllHistoryHandler,
   deleteVideoFromHistoryHandler,
@@ -10,9 +12,7 @@ import "./history.css";
 
 const History = () => {
   const { historyState, historyDispatch } = useHistory();
-  const {
-    authState: { token },
-  } = useAuth();
+  const { token } = useSelector(selectAuth);
   useEffect(
     () => getHistoryHandler({ token, historyDispatch }),
     [historyState]

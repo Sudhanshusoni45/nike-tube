@@ -1,11 +1,13 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
 import "./navbar.css";
 
 const Navbar = ({ searchQuery, setSearchQuery }) => {
-  const {
-    authState: { token, user },
-  } = useAuth();
+  const res = useSelector(selectAuth);
+  console.log("res:", res);
+  const { token, user } = res;
   const searchInputHandler = (e) => {
     setSearchQuery((prevQuery) => e.target.value);
   };

@@ -4,6 +4,8 @@ import { Navbar, Sidebar } from "../../components";
 import { useAuth, usePlaylist } from "../../context";
 import "./singlePlaylist.css";
 import { deleteVideoFromPlaylistHandler } from "../../utils";
+import { useSelector } from "react-redux";
+import { selectAuth } from "../../redux/slice/authSlice";
 const SinglePlaylist = () => {
   const [playlist, setPlaylist] = useState({
     videos: [],
@@ -11,9 +13,9 @@ const SinglePlaylist = () => {
   const Navigate = useNavigate();
   const { playlistId } = useParams();
   const { playlistState, playlistDispatch } = usePlaylist();
-  const {
-    authState: { token },
-  } = useAuth();
+
+  const { token } = useSelector(selectAuth);
+
   const getSinglePlaylist = () => {
     const playlist = playlistState.find((item) => item._id === playlistId);
     if (playlist) {

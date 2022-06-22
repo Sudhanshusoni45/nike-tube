@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useAuth, usePlaylist, usePlaylistModal } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
 import {
   addToPlaylistHandler,
   addVideoToPlaylistHandler,
@@ -14,9 +16,8 @@ const PlaylistModal = () => {
     playlistModalDispatch,
   } = usePlaylistModal();
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
-  const {
-    authState: { token },
-  } = useAuth();
+  const { token } = useSelector(selectAuth);
+
   const { playlistState, playlistDispatch } = usePlaylist();
   const { showNewPlaylistInput } = playlistModalState;
   const changeHandler = (e) => {

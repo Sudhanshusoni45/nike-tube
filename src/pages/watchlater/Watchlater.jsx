@@ -1,13 +1,14 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Navbar, Sidebar } from "../../components";
-import { useAuth, useWatchlater } from "../../context";
+import { useWatchlater } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
 import { getWatchlaterVideoHandler } from "../../utils";
 import "./watchlater.css";
 
 const Watchlater = () => {
-  const {
-    authState: { token },
-  } = useAuth();
+  const { token } = useSelector(selectAuth);
+
   const { watchlaterState, watchlaterDispatch } = useWatchlater();
   useEffect(() => getWatchlaterVideoHandler({ token, watchlaterDispatch }), []);
 

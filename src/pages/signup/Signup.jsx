@@ -12,7 +12,6 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const { authDispatch } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const changeHandler = (e) => {
@@ -21,7 +20,7 @@ const Signup = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    signupHandler({ newUser, authDispatch, navigate, dispatch });
+    signupHandler({ newUser, navigate, dispatch });
   };
   const handleTestCreadentials = () => {
     setNewUser({
@@ -83,12 +82,7 @@ const Signup = () => {
               onChange={changeHandler}
             />
           </div>
-          <div>
-            <input type="checkbox" name="rememberMe" id="rememberMe" />
-            <label className="margin-left-xxs" htmlFor="rememberMe">
-              Remember me
-            </label>
-          </div>
+
           <a href="#">
             <small>Forgot your password</small>
           </a>

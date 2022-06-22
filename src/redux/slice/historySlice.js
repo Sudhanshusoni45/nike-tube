@@ -3,7 +3,6 @@ import {
   addVideoToHistory,
   deleteAllHistory,
   deleteVideoFromHistory,
-  getHistory,
 } from "../thunk";
 
 const initialState = [];

@@ -1,14 +1,13 @@
 import { toast } from "react-toastify";
+import { addToLikeVideo } from "../../redux/thunk/likeVideoThunk";
 import { addToLikeVideoService } from "../../services";
 
-const addToLikeVideoHandler = async ({ token, likedDispatch, video }) => {
+const addToLikeVideoHandler = async ({ token, video, dispatch }) => {
   try {
-    const response = await addToLikeVideoService({ token, video });
-    if (response.status === 201) {
-      const { data } = response;
-      likedDispatch({ type: "ADD_TO_LIKE", payload: data });
-      toast.info("video added to liked videos");
-    }
+    const returnFromDispatch = await dispatch(addToLikeVideo({ video, token }));
+    console.log("returnFromDispatch:", returnFromDispatch);
+    //   toast.info("video added to liked videos");
+    // }
   } catch (error) {
     console.error(error);
   }

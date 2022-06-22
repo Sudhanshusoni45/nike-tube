@@ -1,7 +1,12 @@
 const { configureStore } = require("@reduxjs/toolkit");
 import authReducer from "../slice/authSlice";
 import historyReducer from "../slice/historySlice";
+import likeVideoReducer from "../slice/likeVideoSlice";
 
 export const store = configureStore({
-  reducer: { auth: authReducer, history: historyReducer },
+  reducer: {
+    auth: authReducer,
+    history: historyReducer,
+    likeVideo: likeVideoReducer,
+  },
 });

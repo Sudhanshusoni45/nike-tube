@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const addToLikeVideo = createAsyncThunk(
   "likeVideo/addToLikeVideo",
@@ -12,7 +13,8 @@ export const addToLikeVideo = createAsyncThunk(
         },
       };
       const response = await axios.post(url, data, config);
-      return response;
+      console.log("response from thunk:", response);
+      return response.data;
     } catch (error) {
       console.error(error);
     }

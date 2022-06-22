@@ -11,13 +11,7 @@ import {
   removeFromWatchlaterHandler,
   showPlaylistModalHandler,
 } from "../../utils";
-import {
-  useAuth,
-  useHistory,
-  useLiked,
-  usePlaylistModal,
-  useWatchlater,
-} from "../../context";
+import { useLiked, usePlaylistModal, useWatchlater } from "../../context";
 import "./singleVideoPage.css";
 import { Navbar, PlaylistModal, Sidebar } from "../../components";
 import { selectAuth } from "../../redux/slice/authSlice";
@@ -46,7 +40,7 @@ const SingleVideoPage = () => {
       const isLiked = checkIsLiked(_id);
       isLiked
         ? removeFromLikeHandler({ _id, token, likedDispatch })
-        : addToLikeVideoHandler({ _id, token, video, likedDispatch });
+        : addToLikeVideoHandler({ _id, token, video, dispatch });
     }
   };
 
@@ -104,7 +98,6 @@ const SingleVideoPage = () => {
                   className={`${
                     checkIsLiked(_id) ? "fas" : "far"
                   } fa-thumbs-up `}
-                  onClick={() => likeHandler(_id)}
                 ></i>
                 <span> Like</span>
               </button>

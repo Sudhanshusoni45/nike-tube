@@ -24,9 +24,7 @@ ReactDOM.render(
           <WatchlaterProvider>
             <PlaylistProvider>
               <PlaylistModalProvider>
-                <HistoryProvider>
-                  <App />
-                </HistoryProvider>
+                <App />
               </PlaylistModalProvider>
             </PlaylistProvider>
           </WatchlaterProvider>

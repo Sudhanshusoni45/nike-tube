@@ -1,12 +1,14 @@
+import { addVideoToHistory } from "../../redux/thunk";
 import { addVideoToHistoryService } from "../../services";
 
-const addVideoToHistoryHandler = async ({ token, video, historyDispatch }) => {
+const addVideoToHistoryHandler = ({
+  token,
+  video,
+  historyDispatch,
+  dispatch,
+}) => {
   try {
-    const response = await addVideoToHistoryService({ token, video });
-    if (response.status === 201) {
-      const { data } = response;
-      historyDispatch({ type: "ADD_VIDEO_TO_HISTORY", payload: data });
-    }
+    dispatch(addVideoToHistory({ video, token }));
   } catch (error) {
     console.error(error);
   }

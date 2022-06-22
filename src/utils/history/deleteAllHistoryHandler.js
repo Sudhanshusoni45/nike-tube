@@ -1,12 +1,9 @@
+import { deleteAllHistory } from "../../redux/thunk";
 import { deleteAllHistoryService } from "../../services";
 
-const deleteAllHistoryHandler = async ({ token, historyDispatch }) => {
+const deleteAllHistoryHandler = async ({ token, dispatch }) => {
   try {
-    const response = await deleteAllHistoryService(token);
-    if (response.status === 200) {
-      const { data } = response;
-      historyDispatch({ type: "DELETE_ALL_HISTORY", payload: data });
-    }
+    await dispatch(deleteAllHistory(token));
   } catch (error) {
     console.error(error);
   }

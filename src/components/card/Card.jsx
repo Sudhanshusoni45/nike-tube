@@ -14,7 +14,6 @@ import "./card.css";
 const Card = ({ _id, title, channelName, thumbNail }) => {
   const navigate = useNavigate();
   const { token } = useSelector(selectAuth);
-  console.log("token:", token);
   const { watchlaterDispatch, watchlaterState } = useWatchlater();
   const { playlistModalDispatch } = usePlaylistModal();
   const checkInWatchlater = (_id) =>

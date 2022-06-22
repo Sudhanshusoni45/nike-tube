@@ -6,7 +6,6 @@ import "./navbar.css";
 
 const Navbar = ({ searchQuery, setSearchQuery }) => {
   const res = useSelector(selectAuth);
-  console.log("res:", res);
   const { token, user } = res;
   const searchInputHandler = (e) => {
     setSearchQuery((prevQuery) => e.target.value);

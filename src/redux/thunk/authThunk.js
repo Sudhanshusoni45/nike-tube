@@ -14,7 +14,7 @@ export const login = createAsyncThunk("auth/login", async (userCred) => {
   }
 });
 
-export const signup = createAsyncThunk("auth/signup", async () => {
+export const signup = createAsyncThunk("auth/signup", async (newUser) => {
   try {
     const url = "/api/auth/signup";
     const data = newUser;

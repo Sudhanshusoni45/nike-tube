@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login } from "../thunk";
+import { login, signup } from "../thunk";
 
 const initialState = {
   token: localStorage.getItem("token") ? localStorage.getItem("token") : null,
@@ -17,17 +17,19 @@ const authSlice = createSlice({
       state.status = "loading";
     },
     [login.fulfilled]: (state, action) => {
-      console.log("action:", action);
       const { token, user } = action.payload;
       state.status = "suceeded";
-      state.user = user;
       state.token = token;
-
-      state = {};
+      state.user = user;
     },
     [login.rejected]: (state, action) => {
       state.status = "failed";
       console.error(action);
+    },
+    [signup.fulfilled]: (state, action) => {
+      const { token, user } = action.payload;
+      state.token = token;
+      state.user = user;
     },
   },
 });

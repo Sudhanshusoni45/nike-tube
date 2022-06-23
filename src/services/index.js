@@ -3,10 +3,6 @@ export { getVideosService } from "./videos/getVideos.service";
 // likedVideo
 export { getLikedVideoService } from "./likedVideo/getLikedVideo.service";
 export { getSingleVideoService } from "./videos/getSingleVideo.service";
-// watchlater
-export { getWatchlaterVideoService } from "./watchlater/getWatchlaterVideo.service";
-export { addToWatchlaterService } from "./watchlater/addToWatchlater.service";
-export { removeFromWatchlaterService } from "./watchlater/removeFromWatchlater.service";
 // playlist
 export { getPlaylistService } from "./playlist/getPlaylist.service";
 export { addToPlaylistService } from "./playlist/addToPlaylist.service";

@@ -1,12 +1,8 @@
-import { getWatchlaterVideoService } from "../../services";
+import { getWatchLaterVideo } from "../../redux/thunk/watchlaterThunk";
 
-const getWatchlaterVideoHandler = async ({ token, watchlaterDispatch }) => {
+const getWatchlaterVideoHandler = async ({ token, dispatch }) => {
   try {
-    const response = await getWatchlaterVideoService(token);
-    if (response.status === 200) {
-      const { data } = response;
-      watchlaterDispatch({ type: "INITIALIZE", payload: data });
-    }
+    await dispatch(getWatchLaterVideo(token));
   } catch (error) {
     console.error(error);
   }

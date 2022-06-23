@@ -1,16 +1,13 @@
 import { toast } from "react-toastify";
+import { addToWatchLater } from "../../redux/thunk/watchlaterThunk";
 import { addToWatchlaterService } from "../../services";
 
-const addToWatchlaterHandler = async ({ token, watchlaterDispatch, video }) => {
+const addToWatchlaterHandler = async ({ token, video, dispatch }) => {
   try {
-    const response = await addToWatchlaterService({
-      token,
-      video,
-      watchlaterDispatch,
-    });
-    if (response.status === 201) {
-      const { data } = response;
-      watchlaterDispatch({ type: "ADD_TO_WATCHLATER", payload: data });
+    const {
+      payload: { status },
+    } = await dispatch(addToWatchLater({ video, token }));
+    if (status === 201) {
       toast.success("video added to watchlater");
     }
   } catch (error) {

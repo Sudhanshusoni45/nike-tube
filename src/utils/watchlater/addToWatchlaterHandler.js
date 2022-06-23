@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import { addToWatchLater } from "../../redux/thunk/watchlaterThunk";
-import { addToWatchlaterService } from "../../services";
 
 const addToWatchlaterHandler = async ({ token, video, dispatch }) => {
   try {

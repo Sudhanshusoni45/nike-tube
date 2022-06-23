@@ -10,13 +10,16 @@ import {
   showPlaylistModalHandler,
 } from "../../utils";
 import "./card.css";
+import { selectWatchLater } from "../../redux/slice/watchLaterSlice";
 
 const Card = ({ _id, title, channelName, thumbNail }) => {
   const navigate = useNavigate();
   const { token } = useSelector(selectAuth);
-  const { watchlaterDispatch, watchlaterState } = useWatchlater();
+  const { watchlaterDispatch } = useWatchlater();
   const { playlistModalDispatch } = usePlaylistModal();
   const dispatch = useDispatch();
+
+  const watchlaterState = useSelector(selectWatchLater);
 
   const checkInWatchlater = (_id) =>
     watchlaterState.some((item) => item._id === _id);
@@ -27,7 +30,7 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
       checkInWatchlater(_id)
         ? (() => {
             removeFromWatchlaterHandler({
-              watchlaterDispatch,
+              dispatch,
               token,
               _id,
             });

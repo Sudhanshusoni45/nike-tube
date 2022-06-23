@@ -40,3 +40,24 @@ export const addToWatchLater = createAsyncThunk(
     }
   }
 );
+
+export const removeFromWatchLater = createAsyncThunk(
+  "watchLater/removeFromWatchLater",
+  async ({ token, _id }) => {
+    try {
+      const url = `/api/user/watchlater/${_id}`;
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const {
+        data: { watchlater },
+        status,
+      } = await axios.delete(url, config);
+      return { watchlater, status };
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);

@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addToWatchLater, getWatchLaterVideo } from "../thunk/watchlaterThunk";
+import {
+  addToWatchLater,
+  getWatchLaterVideo,
+  removeFromWatchLater,
+} from "../thunk/watchlaterThunk";
 
 const initialState = [];
 const watchLaterSlice = createSlice({
@@ -11,6 +15,9 @@ const watchLaterSlice = createSlice({
       return watchlater;
     },
     [addToWatchLater.fulfilled]: (state, { payload: { watchlater } }) => {
+      return watchlater;
+    },
+    [removeFromWatchLater.fulfilled]: (state, { payload: { watchlater } }) => {
       return watchlater;
     },
   },

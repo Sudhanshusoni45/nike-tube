@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   addToLikeVideoHandler,
-  addToPlaylistHandler,
   addToWatchlaterHandler,
   addVideoToHistoryHandler,
   getSingleVideoHandler,
@@ -17,29 +16,33 @@ import { Navbar, PlaylistModal, Sidebar } from "../../components";
 import { selectAuth } from "../../redux/slice/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectHistory } from "../../redux/slice/historySlice";
+import { selectLikeVideo } from "../../redux/slice/likeVideoSlice";
 
 const SingleVideoPage = () => {
   const [video, setVideo] = useState({});
-  const { likedState, likedDispatch } = useLiked();
+  const { likedDispatch } = useLiked();
+  const likedState = useSelector(selectLikeVideo);
+  const historyState = useSelector(selectHistory);
+  const { token } = useSelector(selectAuth);
   const dispatch = useDispatch();
 
-  const { token } = useSelector(selectAuth);
   const { watchlaterState, watchlaterDispatch } = useWatchlater();
-  const historyState = useSelector(selectHistory);
   const {
     playlistModalDispatch,
     playlistModalState: { showPlaylistModal },
   } = usePlaylistModal();
   const { youtubeId } = video;
   const { _id } = useParams();
+
   const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
+
   const likeHandler = (_id) => {
     if (token === null) {
       alert("login to like a video");
     } else {
       const isLiked = checkIsLiked(_id);
       isLiked
-        ? removeFromLikeHandler({ _id, token, likedDispatch })
+        ? removeFromLikeHandler({ _id, token, likedDispatch, dispatch })
         : addToLikeVideoHandler({ _id, token, video, dispatch });
     }
   };

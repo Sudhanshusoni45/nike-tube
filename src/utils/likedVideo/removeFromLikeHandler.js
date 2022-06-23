@@ -1,7 +1,12 @@
 import { toast } from "react-toastify";
 import { removeFromLikeService } from "../../services";
 
-const removeFromLikeHandler = async ({ _id, token, likedDispatch }) => {
+const removeFromLikeHandler = async ({
+  _id,
+  token,
+  likedDispatch,
+  dispatch,
+}) => {
   try {
     const response = await removeFromLikeService({ _id, token });
     if (response.status === 200) {

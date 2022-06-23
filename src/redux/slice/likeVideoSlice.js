@@ -8,10 +8,12 @@ const likeVideoSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [addToLikeVideo.fulfilled]: (state, action) => {
-      console.log("action:", action);
+    [addToLikeVideo.fulfilled]: (state, { payload: { likes } }) => {
+      return likes;
     },
   },
 });
 
+const selectLikeVideo = (state) => state.likeVideo;
+export { selectLikeVideo };
 export default likeVideoSlice.reducer;

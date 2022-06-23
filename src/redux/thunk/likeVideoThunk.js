@@ -6,15 +6,17 @@ export const addToLikeVideo = createAsyncThunk(
   async ({ video, token }) => {
     try {
       const url = "/api/user/likes";
-      const data = { video };
+      const dataaa = { video };
       const config = {
         headers: {
           authorization: token,
         },
       };
-      const response = await axios.post(url, data, config);
-      console.log("response from thunk:", response);
-      return response.data;
+      const {
+        data: { likes },
+        status,
+      } = await axios.post(url, dataaa, config);
+      return { likes, status };
     } catch (error) {
       console.error(error);
     }

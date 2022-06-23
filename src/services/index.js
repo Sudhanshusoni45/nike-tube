@@ -1,13 +1,8 @@
-// auth
-export { loginService } from "./authentication/login.service";
-export { signupService } from "./authentication/signup.service";
 // video
 export { getVideosService } from "./videos/getVideos.service";
 // likedVideo
 export { getLikedVideoService } from "./likedVideo/getLikedVideo.service";
-export { addToLikeVideoService } from "./likedVideo/addToLikeVideo.service";
 export { getSingleVideoService } from "./videos/getSingleVideo.service";
-export { removeFromLikeService } from "./likedVideo/removeFromLike.service";
 // watchlater
 export { getWatchlaterVideoService } from "./watchlater/getWatchlaterVideo.service";
 export { addToWatchlaterService } from "./watchlater/addToWatchlater.service";

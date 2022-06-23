@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Sidebar } from "../../components";
-import { useHistory } from "../../context";
 import { selectAuth } from "../../redux/slice/authSlice";
 import { selectHistory } from "../../redux/slice/historySlice";
 import {

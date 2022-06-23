@@ -4,8 +4,6 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import {
-  HistoryProvider,
-  LikedContextProvider,
   PlaylistModalProvider,
   PlaylistProvider,
   WatchlaterProvider,
@@ -20,15 +18,13 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <LikedContextProvider>
-          <WatchlaterProvider>
-            <PlaylistProvider>
-              <PlaylistModalProvider>
-                <App />
-              </PlaylistModalProvider>
-            </PlaylistProvider>
-          </WatchlaterProvider>
-        </LikedContextProvider>
+        <WatchlaterProvider>
+          <PlaylistProvider>
+            <PlaylistModalProvider>
+              <App />
+            </PlaylistModalProvider>
+          </PlaylistProvider>
+        </WatchlaterProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navbar, Sidebar } from "../../components";
-import { useLiked } from "../../context";
 import { selectAuth } from "../../redux/slice/authSlice";
 import { selectLikeVideo } from "../../redux/slice/likeVideoSlice";
 import { getLikedVideoHandler } from "../../utils/likedVideo/getLikedVideoHandler";

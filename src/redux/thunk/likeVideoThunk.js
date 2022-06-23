@@ -1,6 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export const getLikeVideo = createAsyncThunk(
+  "likeVideo/getLikeVideo",
+  async (token) => {
+    try {
+      const url = "/api/user/likes";
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const response = await axios.get(url, config);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
 export const addToLikeVideo = createAsyncThunk(
   "likeVideo/addToLikeVideo",
   async ({ video, token }) => {

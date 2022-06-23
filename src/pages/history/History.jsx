@@ -15,7 +15,6 @@ const History = () => {
   const { token } = useSelector(selectAuth);
 
   const historyState = useSelector(selectHistory);
-  console.log("historyState:", historyState);
   const dispatch = useDispatch();
 
   const clickHandler = () => {

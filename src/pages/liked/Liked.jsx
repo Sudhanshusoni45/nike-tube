@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Sidebar } from "../../components";
 import { selectAuth } from "../../redux/slice/authSlice";
 import { selectLikeVideo } from "../../redux/slice/likeVideoSlice";
@@ -7,10 +7,10 @@ import { getLikedVideoHandler } from "../../utils/likedVideo/getLikedVideoHandle
 import "./liked.css";
 const Liked = () => {
   const { token } = useSelector(selectAuth);
+  const dispatch = useDispatch();
 
-  const { likedDispatch } = useLiked();
   const likedState = useSelector(selectLikeVideo);
-  useEffect(() => getLikedVideoHandler({ token, likedDispatch }), []);
+  useEffect(() => getLikedVideoHandler({ token, dispatch }), []);
   return (
     <>
       <Navbar />

@@ -60,14 +60,11 @@ const SingleVideoPage = () => {
   };
 
   const checkInHistory = (_id) => {
-    console.log("_id:", _id);
     const res = historyState.some((item) => item._id === _id);
     return res;
   };
 
   const onVideoStartHandler = () => {
-    console.log(historyState);
-    console.log(checkInHistory(_id));
     checkInHistory(_id)
       ? null
       : addVideoToHistoryHandler({ token, video, dispatch });

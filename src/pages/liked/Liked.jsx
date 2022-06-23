@@ -11,7 +11,6 @@ const Liked = () => {
 
   const { likedDispatch } = useLiked();
   const likedState = useSelector(selectLikeVideo);
-  console.log("likedState:", likedState);
   useEffect(() => getLikedVideoHandler({ token, likedDispatch }), []);
   return (
     <>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addToLikeVideo } from "../thunk/likeVideoThunk";
+import { addToLikeVideo, removeFromLikeVideo } from "../thunk/likeVideoThunk";
 
 const initialState = [];
 
@@ -9,6 +9,9 @@ const likeVideoSlice = createSlice({
   reducers: {},
   extraReducers: {
     [addToLikeVideo.fulfilled]: (state, { payload: { likes } }) => {
+      return likes;
+    },
+    [removeFromLikeVideo.fulfilled]: (state, { payload: { likes } }) => {
       return likes;
     },
   },

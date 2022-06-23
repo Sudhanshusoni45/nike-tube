@@ -22,3 +22,24 @@ export const addToLikeVideo = createAsyncThunk(
     }
   }
 );
+
+export const removeFromLikeVideo = createAsyncThunk(
+  "likeVideo/removeFromLikeVideo",
+  async ({ _id, token }) => {
+    try {
+      const url = `/api/user/likes/${_id}`;
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const {
+        data: { likes },
+        status,
+      } = await axios.delete(url, config);
+      return { likes, status };
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);

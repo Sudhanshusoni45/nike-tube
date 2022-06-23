@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth, usePlaylist, usePlaylistModal } from "../../context";
 import { selectAuth } from "../../redux/slice/authSlice";
+import {
+  hidePlaylistModal,
+  selectPlaylistModal,
+  toggleNewPlaylistInput,
+} from "../../redux/slice/playlistModalSlice";
 import {
   addToPlaylistHandler,
   addVideoToPlaylistHandler,
@@ -11,34 +16,36 @@ import "./playlistModal.css";
 
 const PlaylistModal = () => {
   const {
-    playlistModalState,
-    playlistModalState: { video },
+    // playlistModalState,
+    // playlistModalState: { video },
     playlistModalDispatch,
   } = usePlaylistModal();
+  const dispatch = useDispatch();
+
+  const playlistModalState = useSelector(selectPlaylistModal);
+  const { video } = playlistModalState;
+
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
   const { token } = useSelector(selectAuth);
 
   const { playlistState, playlistDispatch } = usePlaylist();
   const { showNewPlaylistInput } = playlistModalState;
+
   const changeHandler = (e) => {
     setNewPlaylistTitle((prevName) => e.target.value);
   };
+
   const newPlaylistInputHandler = () => {
-    playlistModalDispatch({
-      type: "TOGGLE_NEWPLAYLIST_INPUT",
-      payload: { showNewPlaylistInput: true },
-    });
+    dispatch(toggleNewPlaylistInput({ showNewPlaylistInput: true }));
   };
+
   const addNewPlaylistHandler = () => {
-    playlistModalDispatch({
-      type: "TOGGLE_NEWPLAYLIST_INPUT",
-      payload: { showNewPlaylistInput: false },
-    });
+    dispatch(toggleNewPlaylistInput({ showNewPlaylistInput: true }));
     addToPlaylistHandler({ token, playlistDispatch, newPlaylistTitle });
     setNewPlaylistTitle((prevTitle) => "");
   };
   const closeBtnHandler = () => {
-    hidePlaylistModalHandler(playlistModalDispatch);
+    dispatch(hidePlaylistModal());
   };
   const checkboxHandler = (playlistId) => {
     checkVideoInPlaylist(playlistId)

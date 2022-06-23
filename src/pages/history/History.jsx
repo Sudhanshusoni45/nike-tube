@@ -11,7 +11,6 @@ import {
 import "./history.css";
 
 const History = () => {
-  const { historyDispatch } = useHistory();
   const { token } = useSelector(selectAuth);
 
   const historyState = useSelector(selectHistory);

@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { usePlaylistModal, useWatchlater } from "../../context";
 import { selectAuth } from "../../redux/slice/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { showPlaylistModal } from "../../redux/slice/playlistModalSlice";
 
 import {
   addToWatchlaterHandler,
   removeFromWatchlaterHandler,
-  showPlaylistModalHandler,
 } from "../../utils";
 import "./card.css";
 import { selectWatchLater } from "../../redux/slice/watchLaterSlice";
@@ -15,8 +14,7 @@ import { selectWatchLater } from "../../redux/slice/watchLaterSlice";
 const Card = ({ _id, title, channelName, thumbNail }) => {
   const navigate = useNavigate();
   const { token } = useSelector(selectAuth);
-  const { watchlaterDispatch } = useWatchlater();
-  const { playlistModalDispatch } = usePlaylistModal();
+
   const dispatch = useDispatch();
 
   const watchlaterState = useSelector(selectWatchLater);
@@ -48,7 +46,7 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
   };
   const playlistIconClickHandler = (video) => {
     if (token !== null) {
-      showPlaylistModalHandler({ playlistModalDispatch, video });
+      dispatch(showPlaylistModal({ video }));
     } else {
       alert("Login to add to playlist");
     }

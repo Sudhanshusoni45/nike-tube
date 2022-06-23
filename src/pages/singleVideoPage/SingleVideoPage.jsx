@@ -17,19 +17,22 @@ import { selectAuth } from "../../redux/slice/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectHistory } from "../../redux/slice/historySlice";
 import { selectLikeVideo } from "../../redux/slice/likeVideoSlice";
+import { selectWatchLater } from "../../redux/slice/watchLaterSlice";
+import {
+  selectPlaylistModal,
+  showPlaylistModal,
+} from "../../redux/slice/playlistModalSlice";
 
 const SingleVideoPage = () => {
-  const [video, setVideo] = useState({});
   const likedState = useSelector(selectLikeVideo);
   const historyState = useSelector(selectHistory);
   const { token } = useSelector(selectAuth);
+  const watchlaterState = useSelector(selectWatchLater);
+  const playlistModalState = useSelector(selectPlaylistModal);
+
+  const [video, setVideo] = useState({});
   const dispatch = useDispatch();
 
-  const { watchlaterState, watchlaterDispatch } = useWatchlater();
-  const {
-    playlistModalDispatch,
-    playlistModalState: { showPlaylistModal },
-  } = usePlaylistModal();
   const { youtubeId } = video;
   const { _id } = useParams();
 
@@ -54,8 +57,8 @@ const SingleVideoPage = () => {
       alert("please login to add a video to wathclater");
     } else {
       checkInWatchlater(_id)
-        ? removeFromWatchlaterHandler({ watchlaterDispatch, _id, token })
-        : addToWatchlaterHandler({ video, watchlaterDispatch, token });
+        ? removeFromWatchlaterHandler({ dispatch, _id, token })
+        : addToWatchlaterHandler({ video, dispatch, token });
     }
   };
 
@@ -74,7 +77,7 @@ const SingleVideoPage = () => {
   return (
     <>
       <Navbar />
-      {showPlaylistModal ? <PlaylistModal /> : null}
+      {playlistModalState.showPlaylistModal ? <PlaylistModal /> : null}
       <div className="sidebar_reactPlayer_container">
         <Sidebar />
         <div className="react_player_container">
@@ -114,12 +117,7 @@ const SingleVideoPage = () => {
               <button
                 className="transparent_btn single_video_action_btn"
                 title="add to playlist"
-                onClick={() =>
-                  showPlaylistModalHandler({
-                    playlistModalDispatch,
-                    video,
-                  })
-                }
+                onClick={() => dispatch(showPlaylistModal(video))}
               >
                 <i className="fas fa-folder-plus"></i>
                 <span> Save</span>

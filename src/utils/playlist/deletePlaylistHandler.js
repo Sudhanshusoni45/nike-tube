@@ -1,16 +1,8 @@
-import { deletePlaylistService } from "../../services";
+import { deletePlaylist } from "../../redux/thunk/playlistThunk";
 
-const deletePlaylistHandler = async ({
-  playlistId,
-  token,
-  playlistDispatch,
-}) => {
+const deletePlaylistHandler = async ({ playlistId, token, dispatch }) => {
   try {
-    const response = await deletePlaylistService({ playlistId, token });
-    if (response.status === 200) {
-      const { data } = response;
-      playlistDispatch({ type: "DELETE_PLAYLIST", payload: data });
-    }
+    await dispatch(deletePlaylist({ playlistId, token }));
   } catch (error) {
     console.error(error);
   }

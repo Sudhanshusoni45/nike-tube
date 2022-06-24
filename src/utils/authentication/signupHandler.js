@@ -1,11 +1,10 @@
-import { signupService } from "../../services";
+import { toast } from "react-toastify";
+import { signup } from "../../redux/thunk";
 
-const signupHandler = async ({ authDispatch, newUser, navigate }) => {
+const signupHandler = async ({ newUser, navigate, dispatch }) => {
   try {
-    const response = await signupService(newUser);
-    if (response.status === 201) {
-      const { encodedToken: token, createdUser: user } = response.data;
-      authDispatch({ type: "SIGNUP", payload: { token, user } });
+    const { payload } = await dispatch(signup(newUser));
+    if (payload.status === 201) {
       navigate("/");
       toast.success("Signed up successfully");
     }

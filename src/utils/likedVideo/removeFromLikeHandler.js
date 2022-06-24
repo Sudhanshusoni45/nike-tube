@@ -1,12 +1,18 @@
 import { toast } from "react-toastify";
+import { removeFromLikeVideo } from "../../redux/thunk/likeVideoThunk";
 import { removeFromLikeService } from "../../services";
 
-const removeFromLikeHandler = async ({ _id, token, likedDispatch }) => {
+const removeFromLikeHandler = async ({
+  _id,
+  token,
+  likedDispatch,
+  dispatch,
+}) => {
   try {
-    const response = await removeFromLikeService({ _id, token });
-    if (response.status === 200) {
-      const { data } = response;
-      likedDispatch({ type: "REMOVE_FROM_LIKE", payload: data });
+    const {
+      payload: { status },
+    } = await dispatch(removeFromLikeVideo({ _id, token }));
+    if (status === 200) {
       toast.info("video removed from liked videos");
     }
   } catch (error) {

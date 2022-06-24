@@ -1,20 +1,25 @@
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Sidebar, PlaylistTile, Navbar } from "../../components";
-import { useAuth, usePlaylist } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
 import { getPlaylistHandler } from "../../utils";
 import "./playlist.css";
+import { useDispatch } from "react-redux";
+import { selectPlaylist } from "../../redux/slice/playlistSlice";
 
 const Playlist = () => {
-  const {
-    authState: { token },
-  } = useAuth();
-  const { playlistState, playlistDispatch } = usePlaylist();
-  useEffect(() => getPlaylistHandler({ token, playlistDispatch }), []);
+  const { token } = useSelector(selectAuth);
+  const dispatch = useDispatch();
+
+  const playlistState = useSelector(selectPlaylist);
+
   const Navigate = useNavigate();
   const clickHandler = (playlistId) => {
     Navigate(`/singleplaylist/${playlistId}`);
   };
+
+  useEffect(() => getPlaylistHandler({ token, dispatch }), []);
 
   return (
     <>

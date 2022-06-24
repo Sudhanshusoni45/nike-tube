@@ -1,30 +1,35 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Card, Navbar, PlaylistModal, Sidebar } from "../../components";
 import { usePlaylistModal } from "../../context";
+import { selectPlaylistModal } from "../../redux/slice/playlistModalSlice";
 import { categoryFilter, getVideosHandler, searchFilter } from "../../utils";
 import "./videoListing.css";
 const VideoListing = () => {
   const [exploreVideos, setExploreVideos] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const {
-    playlistModalState: { showPlaylistModal },
-  } = usePlaylistModal();
+  // const {
+  //   playlistModalState: { showPlaylistModal },
+  // } = usePlaylistModal();
 
   const categoryHandler = (e) => {
     setSelectedCategory((prevCategory) => e.target.value);
   };
 
-  useEffect(() => getVideosHandler(setExploreVideos), []);
+  const { showPlaylistModal } = useSelector(selectPlaylistModal);
 
   const categoryFilteredVideos = categoryFilter({
     exploreVideos,
     selectedCategory,
   });
+
   const searchFilteredVideos = searchFilter({
     categoryFilteredVideos,
     searchQuery,
   });
+
+  useEffect(() => getVideosHandler(setExploreVideos), []);
 
   return (
     <>

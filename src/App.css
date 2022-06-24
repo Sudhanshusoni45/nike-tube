@@ -31,3 +31,6 @@
 .xsmall_margin_bottom {
   margin-bottom: var(--space-xxxs);
 }
+.cursor_pointer {
+  cursor: pointer;
+}

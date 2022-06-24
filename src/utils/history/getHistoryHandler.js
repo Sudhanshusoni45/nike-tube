@@ -1,12 +1,8 @@
-import { getHistoryService } from "../../services";
+import { getHistory } from "../../redux/thunk";
 
-const getHistoryHandler = async ({ token, historyDispatch }) => {
+const getHistoryHandler = async ({ token, dispatch }) => {
   try {
-    const response = await getHistoryService(token);
-    if (response.status === 201) {
-      const { data } = response;
-      historyDispatch({ type: "INITIALIZE_HISTORY", payload: data });
-    }
+    await dispatch(getHistory(token));
   } catch (error) {
     console.error(error);
   }

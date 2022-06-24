@@ -1,12 +1,8 @@
-import { getPlaylistService } from "../../services";
+import { getPlaylist } from "../../redux/thunk/playlistThunk";
 
-const getPlaylistHandler = async ({ token, playlistDispatch }) => {
+const getPlaylistHandler = async ({ token, dispatch }) => {
   try {
-    const response = await getPlaylistService(token);
-    if (response.status === 200) {
-      const { data } = response;
-      playlistDispatch({ type: "INITIALIZE", payload: data });
-    }
+    await dispatch(getPlaylist(token));
   } catch (error) {
     console.error(error);
   }

@@ -3,48 +3,50 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   addToLikeVideoHandler,
-  addToPlaylistHandler,
   addToWatchlaterHandler,
   addVideoToHistoryHandler,
   getSingleVideoHandler,
   removeFromLikeHandler,
   removeFromWatchlaterHandler,
-  showPlaylistModalHandler,
 } from "../../utils";
-import {
-  useAuth,
-  useHistory,
-  useLiked,
-  usePlaylistModal,
-  useWatchlater,
-} from "../../context";
 import "./singleVideoPage.css";
 import { Navbar, PlaylistModal, Sidebar } from "../../components";
+import { selectAuth } from "../../redux/slice/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectHistory } from "../../redux/slice/historySlice";
+import { selectLikeVideo } from "../../redux/slice/likeVideoSlice";
+import { selectWatchLater } from "../../redux/slice/watchLaterSlice";
+import {
+  selectPlaylistModal,
+  showPlaylistModal,
+} from "../../redux/slice/playlistModalSlice";
+
 const SingleVideoPage = () => {
+  const likedState = useSelector(selectLikeVideo);
+  const historyState = useSelector(selectHistory);
+  const { token } = useSelector(selectAuth);
+  const watchlaterState = useSelector(selectWatchLater);
+  const playlistModalState = useSelector(selectPlaylistModal);
+
   const [video, setVideo] = useState({});
-  const { likedState, likedDispatch } = useLiked();
-  const {
-    authState: { token },
-  } = useAuth();
-  const { watchlaterState, watchlaterDispatch } = useWatchlater();
-  const { historyState, historyDispatch } = useHistory();
-  const {
-    playlistModalDispatch,
-    playlistModalState: { showPlaylistModal },
-  } = usePlaylistModal();
+  const dispatch = useDispatch();
+
   const { youtubeId } = video;
   const { _id } = useParams();
+
   const checkIsLiked = (_id) => likedState.some((item) => item._id === _id);
+
   const likeHandler = (_id) => {
     if (token === null) {
       alert("login to like a video");
     } else {
       const isLiked = checkIsLiked(_id);
       isLiked
-        ? removeFromLikeHandler({ _id, token, likedDispatch })
-        : addToLikeVideoHandler({ _id, token, video, likedDispatch });
+        ? removeFromLikeHandler({ _id, token, dispatch })
+        : addToLikeVideoHandler({ _id, token, video, dispatch });
     }
   };
+
   const checkInWatchlater = (_id) =>
     watchlaterState.some((item) => item._id === _id);
 
@@ -53,25 +55,27 @@ const SingleVideoPage = () => {
       alert("please login to add a video to wathclater");
     } else {
       checkInWatchlater(_id)
-        ? removeFromWatchlaterHandler({ watchlaterDispatch, _id, token })
-        : addToWatchlaterHandler({ video, watchlaterDispatch, token });
+        ? removeFromWatchlaterHandler({ dispatch, _id, token })
+        : addToWatchlaterHandler({ video, dispatch, token });
     }
   };
+
   const checkInHistory = (_id) => {
     const res = historyState.some((item) => item._id === _id);
     return res;
   };
+
   const onVideoStartHandler = () => {
     checkInHistory(_id)
       ? null
-      : addVideoToHistoryHandler({ token, video, historyDispatch });
+      : addVideoToHistoryHandler({ token, video, dispatch });
   };
 
   useEffect(() => getSingleVideoHandler({ _id, setVideo }), []);
   return (
     <>
       <Navbar />
-      {showPlaylistModal ? <PlaylistModal /> : null}
+      {playlistModalState.showPlaylistModal ? <PlaylistModal /> : null}
       <div className="sidebar_reactPlayer_container">
         <Sidebar />
         <div className="react_player_container">
@@ -111,12 +115,7 @@ const SingleVideoPage = () => {
               <button
                 className="transparent_btn single_video_action_btn"
                 title="add to playlist"
-                onClick={() =>
-                  showPlaylistModalHandler({
-                    playlistModalDispatch,
-                    video,
-                  })
-                }
+                onClick={() => dispatch(showPlaylistModal({ video }))}
               >
                 <i className="fas fa-folder-plus"></i>
                 <span> Save</span>

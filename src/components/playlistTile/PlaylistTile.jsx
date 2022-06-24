@@ -1,9 +1,9 @@
-import { usePlaylist } from "../../context";
 import { deletePlaylistHandler } from "../../utils";
 import "./playlistTile.css";
+import { useDispatch } from "react-redux";
 
 const PlaylistTile = ({ title, playlistId, token }) => {
-  const { playlistDispatch } = usePlaylist();
+  const dispatch = useDispatch();
   return (
     <>
       <div className="playlistTile">
@@ -16,7 +16,7 @@ const PlaylistTile = ({ title, playlistId, token }) => {
           className="transparent_btn playlist_delete_btn"
           onClick={(e) => {
             e.stopPropagation();
-            deletePlaylistHandler({ playlistId, token, playlistDispatch });
+            deletePlaylistHandler({ playlistId, token, dispatch });
           }}
         >
           <i className="fas fa-trash"></i>

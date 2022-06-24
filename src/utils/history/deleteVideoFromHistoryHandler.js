@@ -1,19 +1,8 @@
-import { deleteVideoFromHistoryService } from "../../services";
+import { deleteVideoFromHistory } from "../../redux/thunk";
 
-const deleteVideoFromHistoryHandler = async ({
-  token,
-  _id,
-  historyDispatch,
-}) => {
+const deleteVideoFromHistoryHandler = async ({ token, _id, dispatch }) => {
   try {
-    const response = await deleteVideoFromHistoryService({
-      token,
-      _id,
-    });
-    if (response.status === 200) {
-      const { data } = response;
-      historyDispatch({ type: "DELETE_VIDEO_FROM_HISTORY", payload: data });
-    }
+    await dispatch(deleteVideoFromHistory({ _id, token }));
   } catch (error) {
     console.error(error);
   }

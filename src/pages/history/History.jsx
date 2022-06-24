@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Sidebar } from "../../components";
-import { useAuth, useHistory } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
+import { selectHistory } from "../../redux/slice/historySlice";
 import {
   deleteAllHistoryHandler,
   deleteVideoFromHistoryHandler,
@@ -9,22 +11,22 @@ import {
 import "./history.css";
 
 const History = () => {
-  const { historyState, historyDispatch } = useHistory();
-  const {
-    authState: { token },
-  } = useAuth();
-  useEffect(
-    () => getHistoryHandler({ token, historyDispatch }),
-    [historyState]
-  );
+  const { token } = useSelector(selectAuth);
+
+  const historyState = useSelector(selectHistory);
+  const dispatch = useDispatch();
+
   const clickHandler = () => {
-    deleteAllHistoryHandler({ token, historyDispatch });
+    deleteAllHistoryHandler({ token, dispatch });
   };
 
   const deleteVideoHandler = (_id, e) => {
     e.stopPropagation();
-    deleteVideoFromHistoryHandler({ _id, token, historyDispatch });
+    deleteVideoFromHistoryHandler({ _id, token, dispatch });
   };
+
+  useEffect(() => getHistoryHandler({ token, dispatch }), []);
+
   return (
     <>
       <Navbar />

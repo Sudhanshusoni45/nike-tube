@@ -1,43 +1,47 @@
 import { useState } from "react";
-import { useAuth, usePlaylist, usePlaylistModal } from "../../context";
+import { useDispatch, useSelector } from "react-redux";
+import { usePlaylist } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
 import {
-  addToPlaylistHandler,
-  addVideoToPlaylistHandler,
-  hidePlaylistModalHandler,
-} from "../../utils";
+  hidePlaylistModal,
+  selectPlaylistModal,
+  toggleNewPlaylistInput,
+} from "../../redux/slice/playlistModalSlice";
+import { selectPlaylist } from "../../redux/slice/playlistSlice";
+import { addToPlaylistHandler, addVideoToPlaylistHandler } from "../../utils";
 import "./playlistModal.css";
 
 const PlaylistModal = () => {
-  const {
-    playlistModalState,
-    playlistModalState: { video },
-    playlistModalDispatch,
-  } = usePlaylistModal();
+  const dispatch = useDispatch();
+  const playlistState = useSelector(selectPlaylist);
+
+  const playlistModalState = useSelector(selectPlaylistModal);
+  const { video } = playlistModalState;
+
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
-  const {
-    authState: { token },
-  } = useAuth();
-  const { playlistState, playlistDispatch } = usePlaylist();
+  const { token } = useSelector(selectAuth);
+
   const { showNewPlaylistInput } = playlistModalState;
+
   const changeHandler = (e) => {
     setNewPlaylistTitle((prevName) => e.target.value);
   };
+
   const newPlaylistInputHandler = () => {
-    playlistModalDispatch({
-      type: "TOGGLE_NEWPLAYLIST_INPUT",
-      payload: { showNewPlaylistInput: true },
-    });
+    dispatch(toggleNewPlaylistInput({ showNewPlaylistInput: true }));
   };
+
   const addNewPlaylistHandler = () => {
-    playlistModalDispatch({
-      type: "TOGGLE_NEWPLAYLIST_INPUT",
-      payload: { showNewPlaylistInput: false },
+    dispatch(toggleNewPlaylistInput({ showNewPlaylistInput: true }));
+    addToPlaylistHandler({
+      token,
+      newPlaylistTitle,
+      dispatch,
     });
-    addToPlaylistHandler({ token, playlistDispatch, newPlaylistTitle });
     setNewPlaylistTitle((prevTitle) => "");
   };
   const closeBtnHandler = () => {
-    hidePlaylistModalHandler(playlistModalDispatch);
+    dispatch(hidePlaylistModal());
   };
   const checkboxHandler = (playlistId) => {
     checkVideoInPlaylist(playlistId)
@@ -45,15 +49,17 @@ const PlaylistModal = () => {
       : addVideoToPlaylistHandler({
           token,
           video,
-          playlistDispatch,
           playlistId,
+          dispatch,
         });
   };
   const checkVideoInPlaylist = (playlistId) => {
-    const playlist = playlistState.find((item) => item._id === playlistId);
-    if (playlist) {
-      return playlist.videos.some((item) => item._id === video._id);
-    } else return false;
+    if (playlistState.length) {
+      const playlist = playlistState.find((item) => item._id === playlistId);
+      if (playlist && playlist.videos) {
+        return playlist.videos.some((item) => item._id === video._id);
+      } else return false;
+    }
   };
   return (
     <>

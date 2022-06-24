@@ -1,19 +1,24 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Navbar, Sidebar } from "../../components";
-import { useAuth, usePlaylist } from "../../context";
+import { usePlaylist } from "../../context";
 import "./singlePlaylist.css";
 import { deleteVideoFromPlaylistHandler } from "../../utils";
+import { useSelector, useDispatch } from "react-redux";
+import { selectAuth } from "../../redux/slice/authSlice";
+import { selectPlaylist } from "../../redux/slice/playlistSlice";
+
 const SinglePlaylist = () => {
   const [playlist, setPlaylist] = useState({
     videos: [],
   });
   const Navigate = useNavigate();
   const { playlistId } = useParams();
-  const { playlistState, playlistDispatch } = usePlaylist();
-  const {
-    authState: { token },
-  } = useAuth();
+  const dispatch = useDispatch();
+
+  const playlistState = useSelector(selectPlaylist);
+  const { token } = useSelector(selectAuth);
+
   const getSinglePlaylist = () => {
     const playlist = playlistState.find((item) => item._id === playlistId);
     if (playlist) {
@@ -28,8 +33,8 @@ const SinglePlaylist = () => {
     deleteVideoFromPlaylistHandler({
       _id,
       token,
-      playlistDispatch,
       playlistId,
+      dispatch,
     });
   };
   useEffect(getSinglePlaylist, [playlistState]);

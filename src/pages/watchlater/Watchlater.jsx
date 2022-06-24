@@ -1,15 +1,20 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Sidebar } from "../../components";
-import { useAuth, useWatchlater } from "../../context";
-import { getWatchlaterVideoHandler } from "../../utils";
+import { selectAuth } from "../../redux/slice/authSlice";
+import { selectWatchLater } from "../../redux/slice/watchLaterSlice";
+import {
+  getWatchlaterVideoHandler,
+  removeFromWatchlaterHandler,
+} from "../../utils";
 import "./watchlater.css";
 
 const Watchlater = () => {
-  const {
-    authState: { token },
-  } = useAuth();
-  const { watchlaterState, watchlaterDispatch } = useWatchlater();
-  useEffect(() => getWatchlaterVideoHandler({ token, watchlaterDispatch }), []);
+  const { token } = useSelector(selectAuth);
+
+  const watchlaterState = useSelector(selectWatchLater);
+  const dispatch = useDispatch();
+  useEffect(() => getWatchlaterVideoHandler({ token, dispatch }), []);
 
   return (
     <>
@@ -30,8 +35,10 @@ const Watchlater = () => {
                   <span>{channelName}</span>
                 </div>
                 <i
-                  className="fas fa-trash stacked-list-icon"
-                  onClick={(e) => deleteVideoHandler(_id, e)}
+                  className="fas fa-trash stacked-list-icon cursor_pointer"
+                  onClick={(e) =>
+                    removeFromWatchlaterHandler({ dispatch, token, _id })
+                  }
                 ></i>
               </li>
             ))

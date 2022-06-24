@@ -1,10 +1,9 @@
+import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/auth-context";
+import { selectAuth } from "../../redux/slice/authSlice";
 
 const RequiresAuth = ({ children }) => {
-  const {
-    authState: { token },
-  } = useAuth();
+  const { token } = useSelector(selectAuth);
   const location = useLocation();
   return token !== null ? (
     children

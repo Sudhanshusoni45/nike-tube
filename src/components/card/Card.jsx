@@ -1,20 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuth, usePlaylistModal, useWatchlater } from "../../context";
+import { selectAuth } from "../../redux/slice/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { showPlaylistModal } from "../../redux/slice/playlistModalSlice";
+
 import {
   addToWatchlaterHandler,
   removeFromWatchlaterHandler,
-  showPlaylistModalHandler,
 } from "../../utils";
 import "./card.css";
+import { selectWatchLater } from "../../redux/slice/watchLaterSlice";
 
 const Card = ({ _id, title, channelName, thumbNail }) => {
   const navigate = useNavigate();
-  const {
-    authState: { token },
-  } = useAuth();
-  const { watchlaterDispatch, watchlaterState } = useWatchlater();
-  const { playlistModalDispatch } = usePlaylistModal();
+  const { token } = useSelector(selectAuth);
+
+  const dispatch = useDispatch();
+
+  const watchlaterState = useSelector(selectWatchLater);
+
   const checkInWatchlater = (_id) =>
     watchlaterState.some((item) => item._id === _id);
 
@@ -24,13 +28,17 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
       checkInWatchlater(_id)
         ? (() => {
             removeFromWatchlaterHandler({
-              watchlaterDispatch,
+              dispatch,
               token,
               _id,
             });
           })()
         : (() => {
-            addToWatchlaterHandler({ token, watchlaterDispatch, video });
+            addToWatchlaterHandler({
+              token,
+              video,
+              dispatch,
+            });
           })();
     } else {
       toast.warning("Login to add to watchlater");
@@ -38,7 +46,7 @@ const Card = ({ _id, title, channelName, thumbNail }) => {
   };
   const playlistIconClickHandler = (video) => {
     if (token !== null) {
-      showPlaylistModalHandler({ playlistModalDispatch, video });
+      dispatch(showPlaylistModal({ video }));
     } else {
       alert("Login to add to playlist");
     }

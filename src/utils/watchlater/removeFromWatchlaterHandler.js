@@ -1,19 +1,16 @@
 import { toast } from "react-toastify";
+import { removeFromWatchLater } from "../../redux/thunk/watchlaterThunk";
 import {
   addToWatchlaterService,
   removeFromWatchlaterService,
 } from "../../services";
 
-const removeFromWatchlaterHandler = async ({
-  watchlaterDispatch,
-  token,
-  _id,
-}) => {
+const removeFromWatchlaterHandler = async ({ dispatch, token, _id }) => {
   try {
-    const response = await removeFromWatchlaterService({ token, _id });
-    if (response.status === 200) {
-      const { data } = response;
-      watchlaterDispatch({ type: "REMOVE_FROM_WATCHLATER", payload: data });
+    const {
+      payload: { status },
+    } = await dispatch(removeFromWatchLater({ token, _id }));
+    if (status === 200) {
       toast.info("video removed from watchlater");
     }
   } catch (error) {

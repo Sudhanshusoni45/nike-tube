@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./signup.css";
 import { signupHandler } from "../../utils";
 import { useAuth } from "../../context/auth-context";
+import { useDispatch } from "react-redux";
 
 const Signup = () => {
   const [newUser, setNewUser] = useState({
@@ -11,7 +12,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const { authDispatch } = useAuth();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -19,7 +20,7 @@ const Signup = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    signupHandler({ newUser, authDispatch, navigate });
+    signupHandler({ newUser, navigate, dispatch });
   };
   const handleTestCreadentials = () => {
     setNewUser({
@@ -81,12 +82,7 @@ const Signup = () => {
               onChange={changeHandler}
             />
           </div>
-          <div>
-            <input type="checkbox" name="rememberMe" id="rememberMe" />
-            <label className="margin-left-xxs" htmlFor="rememberMe">
-              Remember me
-            </label>
-          </div>
+
           <a href="#">
             <small>Forgot your password</small>
           </a>

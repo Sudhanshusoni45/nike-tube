@@ -1,25 +1,16 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuth, usePlaylist, usePlaylistModal } from "../../context";
+import { usePlaylist } from "../../context";
 import { selectAuth } from "../../redux/slice/authSlice";
 import {
   hidePlaylistModal,
   selectPlaylistModal,
   toggleNewPlaylistInput,
 } from "../../redux/slice/playlistModalSlice";
-import {
-  addToPlaylistHandler,
-  addVideoToPlaylistHandler,
-  hidePlaylistModalHandler,
-} from "../../utils";
+import { addToPlaylistHandler, addVideoToPlaylistHandler } from "../../utils";
 import "./playlistModal.css";
 
 const PlaylistModal = () => {
-  const {
-    // playlistModalState,
-    // playlistModalState: { video },
-    playlistModalDispatch,
-  } = usePlaylistModal();
   const dispatch = useDispatch();
 
   const playlistModalState = useSelector(selectPlaylistModal);
@@ -41,7 +32,12 @@ const PlaylistModal = () => {
 
   const addNewPlaylistHandler = () => {
     dispatch(toggleNewPlaylistInput({ showNewPlaylistInput: true }));
-    addToPlaylistHandler({ token, playlistDispatch, newPlaylistTitle });
+    addToPlaylistHandler({
+      token,
+      playlistDispatch,
+      newPlaylistTitle,
+      dispatch,
+    });
     setNewPlaylistTitle((prevTitle) => "");
   };
   const closeBtnHandler = () => {

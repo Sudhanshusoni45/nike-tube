@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { selectPlaylist } from "../../redux/slice/playlistSlice";
 
 const Playlist = () => {
-  const { token, user } = useSelector(selectAuth);
+  const { token } = useSelector(selectAuth);
   const dispatch = useDispatch();
 
   const playlistState = useSelector(selectPlaylist);

@@ -18,3 +18,25 @@ export const getPlaylist = createAsyncThunk(
     }
   }
 );
+
+export const addToPlaylist = createAsyncThunk(
+  "playlist/addToPlaylist",
+  async ({ token, newPlaylistTitle }) => {
+    try {
+      const url = "/api/user/playlists";
+      const data = { playlist: { title: newPlaylistTitle } };
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const {
+        data: { playlists },
+        status,
+      } = await axios.post(url, data, config);
+      return { playlists, status };
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);

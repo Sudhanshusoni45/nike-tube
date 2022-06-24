@@ -54,10 +54,8 @@ const PlaylistModal = () => {
         });
   };
   const checkVideoInPlaylist = (playlistId) => {
-    console.log("playlistState:", playlistState);
     if (playlistState.length) {
       const playlist = playlistState.find((item) => item._id === playlistId);
-      console.log("playlist:", playlist);
       if (playlist && playlist.videos) {
         return playlist.videos.some((item) => item._id === video._id);
       } else return false;

@@ -93,7 +93,6 @@ export const deleteVideoFromPlaylist = createAsyncThunk(
         },
       };
       const response = await axios.delete(url, config);
-      console.log("response:", response);
       return response.data;
     } catch (error) {
       console.error(error);

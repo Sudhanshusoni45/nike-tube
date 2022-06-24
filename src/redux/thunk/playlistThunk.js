@@ -81,3 +81,22 @@ export const deletePlaylist = createAsyncThunk(
     }
   }
 );
+
+export const deleteVideoFromPlaylist = createAsyncThunk(
+  "playlist/deleteVideoFromPlaylist",
+  async ({ playlistId, _id, token }) => {
+    try {
+      const url = `/api/user/playlists/${playlistId}/${_id}`;
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const response = await axios.delete(url, config);
+      console.log("response:", response);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);

@@ -3,6 +3,7 @@ import {
   addToPlaylist,
   addVideoToPlaylist,
   deletePlaylist,
+  deleteVideoFromPlaylist,
   getPlaylist,
 } from "../thunk/playlistThunk";
 
@@ -30,6 +31,9 @@ const playlistSlice = createSlice({
     },
     [deletePlaylist.fulfilled]: (state, { payload: { playlists } }) => {
       return playlists;
+    },
+    [deleteVideoFromPlaylist.fulfilled]: (state, { payload: { playlist } }) => {
+      return getUpdatedPlaylist(playlist, state);
     },
   },
 });

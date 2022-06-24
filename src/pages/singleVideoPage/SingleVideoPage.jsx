@@ -115,7 +115,7 @@ const SingleVideoPage = () => {
               <button
                 className="transparent_btn single_video_action_btn"
                 title="add to playlist"
-                onClick={() => dispatch(showPlaylistModal(video))}
+                onClick={() => dispatch(showPlaylistModal({ video }))}
               >
                 <i className="fas fa-folder-plus"></i>
                 <span> Save</span>

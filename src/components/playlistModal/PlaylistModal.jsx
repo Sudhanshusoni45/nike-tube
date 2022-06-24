@@ -21,7 +21,6 @@ const PlaylistModal = () => {
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
   const { token } = useSelector(selectAuth);
 
-  const { playlistDispatch } = usePlaylist();
   const { showNewPlaylistInput } = playlistModalState;
 
   const changeHandler = (e) => {
@@ -50,16 +49,19 @@ const PlaylistModal = () => {
       : addVideoToPlaylistHandler({
           token,
           video,
-          playlistDispatch,
           playlistId,
           dispatch,
         });
   };
   const checkVideoInPlaylist = (playlistId) => {
-    const playlist = playlistState.find((item) => item._id === playlistId);
-    if (playlist) {
-      return playlist.videos.some((item) => item._id === video._id);
-    } else return false;
+    console.log("playlistState:", playlistState);
+    if (playlistState.length) {
+      const playlist = playlistState.find((item) => item._id === playlistId);
+      console.log("playlist:", playlist);
+      if (playlist && playlist.videos) {
+        return playlist.videos.some((item) => item._id === video._id);
+      } else return false;
+    }
   };
   return (
     <>

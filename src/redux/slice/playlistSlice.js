@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   addToPlaylist,
   addVideoToPlaylist,
+  deletePlaylist,
   getPlaylist,
 } from "../thunk/playlistThunk";
 
@@ -10,7 +11,6 @@ const getUpdatedPlaylist = (newPlaylist, playlistState) => {
   const upDatedPlaylist = playlistState.map((playlist) =>
     playlist._id === newPlaylist._id ? newPlaylist : playlist
   );
-  console.log("upDatedPlaylist:", upDatedPlaylist);
   return upDatedPlaylist;
 };
 
@@ -27,6 +27,9 @@ const playlistSlice = createSlice({
     },
     [addVideoToPlaylist.fulfilled]: (state, { payload: { playlist } }) => {
       return getUpdatedPlaylist(playlist, state);
+    },
+    [deletePlaylist.fulfilled]: (state, { payload: { playlists } }) => {
+      return playlists;
     },
   },
 });

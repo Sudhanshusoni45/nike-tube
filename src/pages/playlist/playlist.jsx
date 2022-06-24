@@ -13,7 +13,6 @@ const Playlist = () => {
   const dispatch = useDispatch();
 
   const playlistState = useSelector(selectPlaylist);
-  console.log("playlistState:", playlistState);
 
   const Navigate = useNavigate();
   const clickHandler = (playlistId) => {

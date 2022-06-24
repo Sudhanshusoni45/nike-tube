@@ -7,11 +7,13 @@ import {
   selectPlaylistModal,
   toggleNewPlaylistInput,
 } from "../../redux/slice/playlistModalSlice";
+import { selectPlaylist } from "../../redux/slice/playlistSlice";
 import { addToPlaylistHandler, addVideoToPlaylistHandler } from "../../utils";
 import "./playlistModal.css";
 
 const PlaylistModal = () => {
   const dispatch = useDispatch();
+  const playlistState = useSelector(selectPlaylist);
 
   const playlistModalState = useSelector(selectPlaylistModal);
   const { video } = playlistModalState;
@@ -19,7 +21,7 @@ const PlaylistModal = () => {
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
   const { token } = useSelector(selectAuth);
 
-  const { playlistState, playlistDispatch } = usePlaylist();
+  const { playlistDispatch } = usePlaylist();
   const { showNewPlaylistInput } = playlistModalState;
 
   const changeHandler = (e) => {
@@ -34,7 +36,6 @@ const PlaylistModal = () => {
     dispatch(toggleNewPlaylistInput({ showNewPlaylistInput: true }));
     addToPlaylistHandler({
       token,
-      playlistDispatch,
       newPlaylistTitle,
       dispatch,
     });
@@ -51,6 +52,7 @@ const PlaylistModal = () => {
           video,
           playlistDispatch,
           playlistId,
+          dispatch,
         });
   };
   const checkVideoInPlaylist = (playlistId) => {

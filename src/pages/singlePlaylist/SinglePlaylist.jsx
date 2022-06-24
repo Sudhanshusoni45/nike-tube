@@ -1,19 +1,21 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Navbar, Sidebar } from "../../components";
-import { useAuth, usePlaylist } from "../../context";
+import { usePlaylist } from "../../context";
 import "./singlePlaylist.css";
 import { deleteVideoFromPlaylistHandler } from "../../utils";
 import { useSelector } from "react-redux";
 import { selectAuth } from "../../redux/slice/authSlice";
+import { selectPlaylist } from "../../redux/slice/playlistSlice";
 const SinglePlaylist = () => {
   const [playlist, setPlaylist] = useState({
     videos: [],
   });
   const Navigate = useNavigate();
   const { playlistId } = useParams();
-  const { playlistState, playlistDispatch } = usePlaylist();
+  const { playlistDispatch } = usePlaylist();
 
+  const playlistState = useSelector(selectPlaylist);
   const { token } = useSelector(selectAuth);
 
   const getSinglePlaylist = () => {

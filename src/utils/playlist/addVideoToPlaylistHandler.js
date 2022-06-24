@@ -1,24 +1,17 @@
 import { toast } from "react-toastify";
-import { addVideoToPlaylistService } from "../../services";
+import { addVideoToPlaylist } from "../../redux/thunk/playlistThunk";
 
 const addVideoToPlaylistHandler = async ({
   token,
   playlistId,
   video,
-  playlistDispatch,
+  dispatch,
 }) => {
   try {
-    const response = await addVideoToPlaylistService({
-      video,
-      token,
-      playlistId,
-    });
-    if (response.status === 201) {
-      const { data } = response;
-      playlistDispatch({
-        type: "ADD_VIDEO_TO_PLAYLIST",
-        payload: data,
-      });
+    const {
+      payload: { status },
+    } = await dispatch(addVideoToPlaylist({ video, token, playlistId }));
+    if (status === 201) {
       toast.success("video added to playlist");
     }
   } catch (error) {

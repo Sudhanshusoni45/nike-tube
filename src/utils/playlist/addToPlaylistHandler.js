@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import { addToPlaylist } from "../../redux/thunk/playlistThunk";
-import { addToPlaylistService } from "../../services";
 
 const addToPlaylistHandler = async ({ token, newPlaylistTitle, dispatch }) => {
   try {

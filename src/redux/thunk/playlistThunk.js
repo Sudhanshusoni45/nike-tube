@@ -40,3 +40,25 @@ export const addToPlaylist = createAsyncThunk(
     }
   }
 );
+
+export const addVideoToPlaylist = createAsyncThunk(
+  "playlist/addVideoToPlaylist",
+  async ({ playlistId, video, token }) => {
+    try {
+      const url = `/api/user/playlists/${playlistId}`;
+      const data = { video };
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const {
+        data: { playlist },
+        status,
+      } = await axios.post(url, data, config);
+      return { playlist, status };
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);

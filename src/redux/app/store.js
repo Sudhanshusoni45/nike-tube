@@ -4,6 +4,7 @@ import historyReducer from "../slice/historySlice";
 import likeVideoReducer from "../slice/likeVideoSlice";
 import watchLaterReducer from "../slice/watchLaterSlice";
 import playlistModalReducer from "../slice/playlistModalSlice";
+import playlistReducer from "../slice/playlistSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     likeVideo: likeVideoReducer,
     watchLater: watchLaterReducer,
     playlistModal: playlistModalReducer,
+    playlist: playlistReducer,
   },
 });

@@ -8,9 +8,7 @@ import {
   getSingleVideoHandler,
   removeFromLikeHandler,
   removeFromWatchlaterHandler,
-  showPlaylistModalHandler,
 } from "../../utils";
-import { usePlaylistModal, useWatchlater } from "../../context";
 import "./singleVideoPage.css";
 import { Navbar, PlaylistModal, Sidebar } from "../../components";
 import { selectAuth } from "../../redux/slice/authSlice";

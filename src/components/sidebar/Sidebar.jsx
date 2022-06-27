@@ -35,12 +35,6 @@ const Sidebar = () => {
             <span>History</span>
           </Link>
         </li>
-        {/* commented on purpose */}
-        {/* <li>
-          <i className="sidebar_icon fas fa-cog"></i>
-
-          <span>Settings</span>
-        </li> */}
       </ul>
     </div>
   );

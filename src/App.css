@@ -22,6 +22,9 @@
   border-radius: 0.7rem;
   object-fit: fill;
 }
+.small_margin_top {
+  margin-top: var(--space-xxs);
+}
 .medium_top_margin {
   margin-top: var(--space-md);
 }
@@ -33,4 +36,10 @@
 }
 .cursor_pointer {
   cursor: pointer;
+}
+.medium_left_margin {
+  margin-left: var(--space-md);
+}
+.link_reset {
+  text-decoration: none;
 }

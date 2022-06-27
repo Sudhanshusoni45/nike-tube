@@ -16,7 +16,7 @@ const Liked = () => {
       <Navbar />
       <div className="sidebar_likedVideos_container">
         <Sidebar />
-        <div className="">
+        <div className="liked_videos_list_container">
           {likedState.length ? (
             likedState.map(({ title, thumbNail, _id, channelName }) => (
               <li

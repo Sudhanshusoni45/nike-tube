@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context";
 import { selectAuth } from "../../redux/slice/authSlice";
 import "./navbar.css";
 
 const Navbar = ({ searchQuery, setSearchQuery }) => {
+  const { pathname } = useLocation();
   const res = useSelector(selectAuth);
   const { token, user } = res;
   const searchInputHandler = (e) => {
@@ -12,16 +13,22 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
   };
   return (
     <header className="navigation">
-      <div>{/* <i className="fas fa-bars"></i> */}</div>
-      <div className="">
-        <input
-          type="text"
-          placeholder="Search videos"
-          value={searchQuery}
-          onChange={searchInputHandler}
-          className="search_bar"
-        />
+      <div>
+        <Link to={"/"} className="link_reset logo_link">
+          <h2 className="medium_left_margin">Nike Tube</h2>
+        </Link>
       </div>
+      {pathname === "/" ? (
+        <div>
+          <input
+            type="text"
+            placeholder="Search videos"
+            value={searchQuery}
+            onChange={searchInputHandler}
+            className="search_bar"
+          />
+        </div>
+      ) : null}
       <nav>
         <ul>
           <li>

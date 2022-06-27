@@ -2,6 +2,9 @@
   margin-top: 2.6rem;
   height: 84vh;
 }
+.watchlater_video_list_container {
+  margin-left: var(--space-md);
+}
 .watchlater_video_thumbnail {
   width: 13rem;
   height: 8rem;

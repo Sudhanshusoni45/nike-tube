@@ -21,7 +21,7 @@ const Watchlater = () => {
       <Navbar />
       <div className="display_flex sidebar_watchlater_container">
         <Sidebar />
-        <div className="medium_top_margin">
+        <div className="medium_top_margin watchlater_video_list_container">
           {watchlaterState.length !== 0 ? (
             watchlaterState.map(({ _id, thumbNail, title, channelName }) => (
               <li key={_id} className="list_reset stacked-list-item">

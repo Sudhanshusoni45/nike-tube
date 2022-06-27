@@ -1,6 +1,7 @@
 .playlist_sidebar_container {
   display: flex;
   margin-top: 2.6rem;
+  height: 84vh;
 }
 .playlist_tile_container {
   width: 100%;

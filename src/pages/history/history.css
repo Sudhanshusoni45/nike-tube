@@ -2,6 +2,9 @@
   margin-top: 2.6rem;
   height: 84vh;
 }
+.history_list {
+  margin-left: var(--space-md);
+}
 .fa-trash.stacked-list-icon {
   margin-left: auto;
 }
